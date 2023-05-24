@@ -1,0 +1,26 @@
+article{
+    width: 30%;
+    height: 30%;
+    padding: 1%;
+    margin-bottom: 2%;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: black solid 1px;
+    box-shadow: 1px 1px 2px;
+}
+
+img {
+    border-radius: 1rem;
+    border: black solid 2px;
+    box-shadow: 1px 1px 2px;
+}
+
+.articleImg {
+    width: 95%;
+    height: 20%;
+}
+
+.cartImpl {
+    margin-bottom: 1%;
+    background-color: blue;
+}

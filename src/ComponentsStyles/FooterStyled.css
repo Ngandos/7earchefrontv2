@@ -1,0 +1,19 @@
+footer {
+    width: 100%;
+}
+
+.footMain {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.footOne {
+    width: 50%;
+    height: 100%;
+}
+
+.footTwo {
+    width: 50%;
+    height: 100%;
+}

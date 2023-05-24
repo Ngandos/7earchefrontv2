@@ -1,0 +1,29 @@
+main {
+    padding: auto;
+    margin: auto;
+}
+
+.cartItemContainer {
+    width: 90%;
+    margin: auto;
+}
+
+.cartItem {
+    height: 10%;
+    display: flex;
+    margin: auto;
+    margin-bottom: 1%;
+    padding: 1%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color: black;
+    background-color: bisque;
+    border: black solid 1px;
+}
+
+.cartButton {
+    height: 50%;
+    align-self: center;
+}

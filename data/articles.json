@@ -1,0 +1,55 @@
+{
+    "articles": [
+        
+        {
+            "sku": "item0001",
+            "name": "Beurre de Karité 250g",
+            "prix": 9.99
+        },
+        {
+            "sku": "item0002",
+            "name": "Beurre de Karité 150g",
+            "prix": 9.99
+        },
+        {
+            "sku": "item0003",
+            "name": "Huile de ricin 30 ml",
+            "prix": 9.99
+        },
+        {
+            "sku": "Savons au karité",
+            "name": "Livre 4",
+            "prix": 9.99
+        },
+        {
+            "sku": "item0005",
+            "name": "Livre 5",
+            "prix": 9.99
+        },
+        {
+            "sku": "item0006",
+            "name": "Livre 6",
+            "prix": 9.99
+        },
+        {
+            "sku": "item0007",
+            "name": "Livre 7",
+            "prix": 9.99
+        },
+        {
+            "sku": "item0008",
+            "name": "Livre 8",
+            "prix": 9.99
+        },
+        {
+            "sku": "item0009",
+            "name": "Livre 9",
+            "prix": 9.99
+        },
+        {
+            "sku": "item0010",
+            "name": "Livre 10",
+            "prix": 9.99
+        }
+    ]
+}

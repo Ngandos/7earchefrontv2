@@ -1,0 +1,55 @@
+{
+    "categories": [
+        
+        {
+            "sku": "item0001",
+            "name": "livres",
+            "description": ""
+        },
+        {
+            "sku": "item0002",
+            "name": "High-Tech",
+            "description": ""
+        },
+        {
+            "sku": "item0003",
+            "name": "dvd",
+            "description": ""
+        },
+        {
+            "sku": "item0004",
+            "name": "cd",
+            "description": ""
+        },
+        {
+            "sku": "item0005",
+            "name": "Hi-Fi",
+            "description": ""
+        },
+        {
+            "sku": "item0006",
+            "name": "Téléphonie",
+            "description": ""
+        },
+        {
+            "sku": "item0007",
+            "name": "Cosmetiques",
+            "description": ""
+        },
+        {
+            "sku": "item0008",
+            "name": "Crême",
+            "description": ""
+        },
+        {
+            "sku": "item0009",
+            "name": "Huiles",
+            "description": ""
+        },
+        {
+            "sku": "item0010",
+            "name": "Goodies",
+            "description": ""
+        }
+    ]
+}
