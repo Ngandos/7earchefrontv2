@@ -1,3 +1,8 @@
+.offScreen {
+    width: auto;
+    margin: auto;
+}
+
 .CartContent {
     margin: auto;
     padding: 24px;

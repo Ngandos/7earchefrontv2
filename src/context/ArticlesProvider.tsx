@@ -1,9 +1,14 @@
 import { ReactElement, createContext, useState, useEffect } from "react"
 
 export type ArticleType = {
+    id: number,
     ref: string,
-    name: string,
-    prix: number,
+    categorie: string,
+    nom: string,
+    prixHT: number,
+    prixTTC: number,
+    tva: number,
+    designation: string
 }
 
 const initState: ArticleType[] = []

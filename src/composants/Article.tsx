@@ -26,12 +26,13 @@ const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }:
 
         const content = (
             <article className='article'>
-                <h3>{ article.name }</h3>
-                <img src= {img} alt={ article.name } className='articleImg'/>
+                <h3>{ article.nom }</h3>
+                <img src= {img} alt={ article.nom } className='articleImg'/>
+                <p>{article.categorie}</p>
                 <p>
                     {new Intl.NumberFormat('fr-FR', 
                     { style: 'currency', currency: 'EUR' })
-                    .format(article.prix)} { itemInCart }
+                    .format(article.prixTTC)} { itemInCart }
                 </p>
                 <button className='CartImpl' onClick = {onAddToCart}> 
                     <p>Ajouter au Panier</p>

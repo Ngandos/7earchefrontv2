@@ -1,5 +1,6 @@
 import { ChangeEvent, ReactElement, memo } from "react";
-import "./ComponentsStyles/CartLineItem.css"
+import "../ComponentsStyles/CartLineItem.css";
+import '../images/HuilesVegetales/huile_davocat.jpg';
 import { CartItemType, ReducerAction, ReducerActionType } from "../context/CartProvider";
 
 type PropsType = {
@@ -14,7 +15,7 @@ const CartLineItem = ( { item, dispatch, REDUCER_ACTIONS }: PropsType) => {
 
     const img: string = new URL(`${huile_davocat}`, import.meta.url).href
 
-    const lineTotal: number = (item.qty * item.prix)
+    const lineTotal: number = (item.qty * item.prixTTC)
 
     const highestQty: number = 20 > item.qty ? 20 : item.qty
     
@@ -41,14 +42,14 @@ const CartLineItem = ( { item, dispatch, REDUCER_ACTIONS }: PropsType) => {
     const content = (
         <ul className="cartItemContainer">
             <li className = "cartItem">
-                <img src = {img} alt = {item.name} className="cartImg"/>
+                <img src = {img} alt = {item.nom} className="cartImg"/>
                 <div aria-label = "item Name">
-                    { item.name }
+                    { item.nom }
                 </div>
                 <div aria-label = "Price Per Item">
                     { new Intl.NumberFormat('fr-FR', 
                     {style: 'currency', currency: 'EUR'})
-                    .format(item.prix)}
+                    .format(item.prixTTC)}
                 </div>
                 <div className="CartManager">
                     <label htmlFor="itemQty" className="offscreen">

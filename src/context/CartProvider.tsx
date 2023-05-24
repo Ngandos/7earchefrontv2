@@ -1,10 +1,15 @@
 import { useMemo, useReducer, createContext, ReactElement } from "react"
 
 export type CartItemType = {
+    id: number,
     ref: string,
-    name: string,
-    prix: number,
-    qty: number
+    categorie: string,
+    nom: string,
+    prixHT: number,
+    prixTTC: number,
+    tva: number,
+    designation: string,
+    qty: number,
 }
 
 type CartStateType = { cart: CartItemType[] }
@@ -33,16 +38,16 @@ const reducer = (state: CartStateType, action: ReducerAction): CartStateType => 
             if (!action.payload) {
                 throw new Error('action.payload missing in ADD action')
             }
-            const { ref, name, prix } = action.payload;
+            const { id, ref, categorie, nom, prixHT, prixTTC, tva, designation } = action.payload;
 
             const filteredCart: CartItemType[] = state.cart.filter(item => item.ref != ref);
 
             const itemExists: CartItemType | undefined = state.cart.find(item => item.ref === ref);
 
             const qty: number = itemExists ? itemExists.qty + 1 : 1
-            ref
+            
             return {
-                 ...state, cart: [ ...filteredCart, { ref, name, prix, qty }]
+                 ...state, cart: [ ...filteredCart, {  id, ref, categorie, nom, prixHT, prixTTC, tva, designation, qty }]
             }
         }
         break;
@@ -96,7 +101,7 @@ const useCartContext = (initCartState: CartStateType) => {
     const totalPrice = new Intl.NumberFormat('fr-fr', { style: 'currency', currency: 'EUR' })
         .format(state.cart
         .reduce((previousValue, cartItem) => {
-            return previousValue + (cartItem.qty * cartItem.prix)
+            return previousValue + (cartItem.qty * cartItem.prixHT)
         }, 0)
     )
 
