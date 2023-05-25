@@ -1,7 +1,7 @@
 import useCart from "../hooks/useCart";
 import { useState } from "react";
 import CartLineItem from "./CartLineItem";
-import '../ComponentsStyles/CartStyled.css'
+import '../ComponentsStyles/CartStyled.css';
 
 const Cart = () => {
 
@@ -15,10 +15,12 @@ const Cart = () => {
     }
 
     const pageContent = confirm ? (
+
             <h2>Thanks for your order.</h2> 
         ) : (
                 <div className="CartContent">
                     <h1 className="offScreen">Panier</h1>
+                    <br/>
                     <ul className="cart">
                         {cart.map(item => {
                             return (
@@ -42,6 +44,7 @@ const Cart = () => {
                     </div>
                 </div>
             )
+
             const content = (
                 <main className="main main--cart">
                     { pageContent }

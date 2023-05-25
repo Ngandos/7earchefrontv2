@@ -22,6 +22,7 @@ const CartLineItem = ( { item, dispatch, REDUCER_ACTIONS }: PropsType) => {
     const optionValues: number[] = [ ...Array(highestQty).keys()].map(i => i + 1)
 
     const options: ReactElement[] = optionValues.map(val => {
+
         return <option key = { `ops${val}` } value = {val}>
                     {val}
                 </option>
@@ -69,15 +70,17 @@ const CartLineItem = ( { item, dispatch, REDUCER_ACTIONS }: PropsType) => {
                 </div>
                 <div className="cartItemSubTotal" arial-label = "Line Item Subtotal">
                     { 
-                    new Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'})
-                    .format(lineTotal)
+                        new Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'})
+                        .format(lineTotal)
                     }
                 </div>
-                <button className="cartButton" 
-                        aria-label = "Remove Item From Cart" 
-                        title = "Remove Item From Cart"
-                        onClick = {onRemoveFromCart}
-                >X</button>
+                <button 
+                    className="cartButton" 
+                    aria-label = "Remove Item From Cart" 
+                    title = "Remove Item From Cart"
+                    onClick = {onRemoveFromCart}
+                    >X
+                </button>
             </li>
         </ul>
     )

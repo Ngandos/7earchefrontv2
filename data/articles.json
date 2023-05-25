@@ -18,7 +18,7 @@
             "nom": "Les Fleurs du mal",
             "prixHT": 9.99,
             "prixTTC": 9.99, 
-            "tva": "",
+            "tva": "0.2",
             "designation": ""
         },
         {
@@ -28,7 +28,7 @@
             "nom": "Huile de ricin 30 ml",
             "prixHT": 9.99,
             "prixTTC": 9.99, 
-            "tva": "",
+            "tva": "0.2",
             "designation": ""
         },
         {
@@ -38,7 +38,7 @@
             "nom": "Savons au karité",
             "prixHT": 9.99,
             "prixTTC": 9.99, 
-            "tva": "",
+            "tva": "0.2",
             "designation": ""
         },
         {
@@ -48,7 +48,7 @@
             "nom": "Livre 5",
             "prixHT": 9.99,
             "prixTTC": 9.99, 
-            "tva": "",
+            "tva": "0.2",
             "designation": ""
         },
         {
@@ -58,7 +58,7 @@
             "nom": "Livre 6",
             "prixHT": 9.99,
             "prixTTC": 9.99, 
-            "tva": "",
+            "tva": "0.2",
             "designation": ""
         },
         {
@@ -68,7 +68,7 @@
             "nom": "Livre 7",
             "prixHT": 9.99,
             "prixTTC": 9.99, 
-            "tva": "",
+            "tva": "0.2",
             "designation": ""
         },
         {
@@ -78,7 +78,7 @@
             "nom": "Livre 8",
             "prixHT": 9.99,
             "prixTTC": 9.99, 
-            "tva": "",
+            "tva": "0.2",
             "designation": ""
         },
         {
@@ -88,7 +88,7 @@
             "nom": "Livre 9",
             "prixHT": 9.99,
             "prixTTC": 9.99,
-            "tva": "",
+            "tva": "0.2",
             "designation": ""
         },
         {
@@ -98,7 +98,7 @@
             "nom": "Livre 10",
             "prixHT": 9.99,
             "prixTTC": 9.99, 
-            "tva": "",
+            "tva": "0.2",
             "designation": ""
         }
     ]

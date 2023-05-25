@@ -6,9 +6,20 @@
 .CartContent {
     margin: auto;
     padding: 24px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+}
+
+.cartTotals {
+    width: 100%;
+    display: flex;
+    padding: 2px;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .cart {
     margin: auto;
+    width: 100%;
 }
