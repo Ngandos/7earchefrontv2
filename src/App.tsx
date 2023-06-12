@@ -4,6 +4,7 @@ import ArticleList from "./composants/ArticleList"
 import Header from "./composants/Header"
 import Footer from "./composants/Footer"
 import Articles from "./composants/Article"
+import SearchBar from "./composants/SearchBar"
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
   const content = (
     <div className='MainArea'>
       <Header viewCart = { viewCart } setViewCart = {setViewCart} />
-      { pageContent }
+        <SearchBar/>
+        { pageContent }
       <Footer viewCart={false} />
     </div>
   )

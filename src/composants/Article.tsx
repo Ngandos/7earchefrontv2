@@ -16,17 +16,16 @@ const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }:
 
         const huile_davocat = '/src/images/HuilesVegetales/huile_davocat.jpg';
     
-    const img: string = new URL(`${huile_davocat}`, import.meta.url).href
+        const img: string = new URL(`${huile_davocat}`, import.meta.url).href
 
-    console.log(img, huile_davocat)
+        console.log(img, huile_davocat)
 
-    const onAddToCart = () => dispatch({ type: REDUCER_ACTIONS.ADD, payload: { ...article, qty: 1 }})
+        const onAddToCart = () => dispatch({ type: REDUCER_ACTIONS.ADD, payload: { ...article, qty: 1 }})
 
         const itemInCart = inCart ? ' -> Ajouté au panier: ' : null
 
         const content = (
             <article className='article'>
-                <h2>{article.categorie}</h2>
                 <img src= {img} alt={ article.nom } className='articleImg'/>
                 <h3>{ article.nom }</h3>
                 <strong>
@@ -51,7 +50,8 @@ function areArticlesEqual({ article: prevArticle, inCart: prevInCart }: PropsTyp
                 return (
                     prevArticle[key as keyof ArticleType] === 
                     nextArticle[key as keyof ArticleType]
-            )}) && prevInCart === nextInCart
+                )
+            }) && prevInCart === nextInCart
         )
     }
 
