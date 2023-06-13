@@ -26,7 +26,7 @@ export const ArticlesProvider = ({ children }: ChildrenType): ReactElement => {
 
     useEffect(() => {
         const fetchArticles = async (): Promise<ArticleType[]> => {
-            const data = await fetch('http://localhost:3500/articles')
+            const data = await fetch('http://localhost:8080/demo/articles')
             .then(res => {
                 return res.json()
             })

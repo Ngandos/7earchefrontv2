@@ -26,8 +26,8 @@ const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }:
 
         const content = (
             <article className='article'>
+                <h3>{ article.designation }</h3>
                 <img src= {img} alt={ article.nom } className='articleImg'/>
-                <h3>{ article.nom }</h3>
                 <strong>
                     <p>
                         {new Intl.NumberFormat('fr-FR', 
