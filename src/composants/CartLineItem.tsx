@@ -11,9 +11,7 @@ type PropsType = {
 
 const CartLineItem = ( { item, dispatch, REDUCER_ACTIONS }: PropsType) => {
 
-    const huile_davocat = '/src/images/HuilesVegetales/huile_davocat.jpg';
-
-    const img: string = new URL(`${huile_davocat}`, import.meta.url).href
+    const img: string = new URL(`/src/images/ArticlesLivres/${item.designation}.jpg`, import.meta.url).href
 
     const lineTotal: number = (item.qty * item.prixTTC)
 
