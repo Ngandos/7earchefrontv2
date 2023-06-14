@@ -13,6 +13,7 @@ const Cart = () => {
         dispatch({ type: REDUCER_ACTIONS.SUBMIT })
         setConfirm(true)
     }
+    console.log(Cart)
 
     const pageContent = confirm ? (
 
@@ -34,8 +35,8 @@ const Cart = () => {
                         })}
                     </ul>
                     <div className="cartTotals">
-                        <p>Total Articles: {totalItems}</p>
-                        <p>Total Prices: {totalPrice}</p>
+                        <p>Total des Articles de la commande : {totalItems}</p>
+                        <p>Prix total de la commande : {totalPrice}</p>
                         <button className ="cartSubmit" disabled = {!totalItems} 
                             onClick = {onSubmitOrder}
                         >

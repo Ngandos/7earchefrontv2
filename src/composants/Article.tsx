@@ -14,7 +14,7 @@ type PropsType = {
 const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }: 
     PropsType): ReactElement => {
 
-        const huile_davocat = '/src/images/HuilesVegetales/huile_davocat.jpg';
+        const huile_davocat = '/src/images/ArticlesLivres/Snowpiercer.jpg';
     
         const img: string = new URL(`${huile_davocat}`, import.meta.url).href
 

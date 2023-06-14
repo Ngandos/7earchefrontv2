@@ -44,43 +44,46 @@ const CartLineItem = ( { item, dispatch, REDUCER_ACTIONS }: PropsType) => {
         <ul className="cartItemContainer">
             <li className = "cartItem">
                 <img src = {img} alt = {item.nom} className="cartImg"/>
-                <div aria-label = "item Name">
-                    { item.nom }
+                <div className="CartItemDatas">
+                    <div aria-label = "item Name">
+                        <h3>{ item.designation }</h3>
+                    </div>
+                    <div aria-label = "Price Per Item" className="price">
+                        <strong>Prix unitaire : </strong>
+                        { new Intl.NumberFormat('fr-FR', 
+                        {style: 'currency', currency: 'EUR'})
+                        .format(item.prixTTC)}
+                    </div>
+                    <div className="CartManager">
+                        <label htmlFor="itemQty" className="offscreen">
+                            <strong>Quantité</strong>
+                        </label>
+                        <br/>
+                        <select 
+                            name = "itemQty" 
+                            id = "itemQty" 
+                            className="cartSelect" 
+                            value = {item.qty}
+                            aria-label = "Item Quantity"
+                            onChange = {onChangeQty}
+                        >
+                            {options}    
+                        </select>
+                    </div>
+                    <div className="cartItemSubTotal" arial-label = "Line Item Subtotal">
+                        { 
+                            new Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'})
+                            .format(lineTotal)
+                        }
+                    </div>
+                    <button 
+                        className="cartButton" 
+                        aria-label = "Remove Item From Cart" 
+                        title = "Remove Item From Cart"
+                        onClick = {onRemoveFromCart}
+                        >Retirer L'article
+                    </button>
                 </div>
-                <div aria-label = "Price Per Item">
-                    { new Intl.NumberFormat('fr-FR', 
-                    {style: 'currency', currency: 'EUR'})
-                    .format(item.prixTTC)}
-                </div>
-                <div className="CartManager">
-                    <label htmlFor="itemQty" className="offscreen">
-                        Quantité
-                    </label>
-                    <br/>
-                    <select 
-                        name = "itemQty" 
-                        id = "itemQty" 
-                        className="cartSelect" 
-                        value = {item.qty}
-                        aria-label = "Item Quantity"
-                        onChange = {onChangeQty}
-                    >
-                        {options}    
-                    </select>
-                </div>
-                <div className="cartItemSubTotal" arial-label = "Line Item Subtotal">
-                    { 
-                        new Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'})
-                        .format(lineTotal)
-                    }
-                </div>
-                <button 
-                    className="cartButton" 
-                    aria-label = "Remove Item From Cart" 
-                    title = "Remove Item From Cart"
-                    onClick = {onRemoveFromCart}
-                    >X
-                </button>
             </li>
         </ul>
     )
