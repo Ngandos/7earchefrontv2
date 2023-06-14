@@ -13,12 +13,9 @@ type PropsType = {
 
 const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }: 
     PropsType): ReactElement => {
-
-        const huile_davocat = '/src/images/ArticlesLivres/Snowpiercer.jpg';
     
-        const img: string = new URL(`${huile_davocat}`, import.meta.url).href
+        const img: string = new URL(`/src/images/ArticlesLivres/${article.designation}.jpg`, import.meta.url).href
 
-        console.log(img, huile_davocat)
 
         const onAddToCart = () => dispatch({ type: REDUCER_ACTIONS.ADD, payload: { ...article, qty: 1 }})
 
@@ -27,7 +24,7 @@ const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }:
         const content = (
             <article className='article'>
                 <h3>{ article.designation }</h3>
-                <img src= {img} alt={ article.nom } className='articleImg'/>
+                <img src= {img} alt={ article.designation } className='articleImg'/>
                 <strong>
                     <p>
                         {new Intl.NumberFormat('fr-FR', 
