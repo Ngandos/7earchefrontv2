@@ -1,12 +1,12 @@
 .main--articles {
-    width: 95%;
-    margin:auto;
+    width: auto;
+    margin: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 24px;
     margin-top: 2%;
-    background-color: blue;
+    background-color: burlywood;
     border: black solid 1px;
 }

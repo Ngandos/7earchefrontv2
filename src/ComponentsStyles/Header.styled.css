@@ -1,22 +1,36 @@
 .header {
     width: 100%;
-    height: 10%;
+    height: 7%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: blue;
+    background-color:saddlebrown;
     border-bottom: black solid 2px;
     box-shadow: 2px 2px 6px;
+}
+
+.headerTitleBar {
+    width: 50%;
 }
 
 .headTitle {
     margin-left: 5px;
 }
 
-.headertitleBar, .headerPriceBox {
-    margin: 0 10px 0 10px;
+.headerPriceBox {
+    width: 50%;
+    margin-bottom: 2%;
+    /* padding: 24px; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
+.headerTitleBar, 
 .headerPriceBox {
-    margin-bottom: 2%;
+    margin: 0 10px 0 10px;
+    padding: 24px;
+    
+    
 }
+

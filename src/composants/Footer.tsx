@@ -16,7 +16,7 @@ const Footer = ( { viewCart }: PropsType ) => {
             <>
                 <p>Nombre D'articles : { totalItems }</p>
                 <p>Prix Total : { totalPrice }</p>
-                <p>Congo-b-Exchange-OnlineShop &copy; {year}</p>
+                <p>7eArche Template performed by Wakanda Developpement</p>
             </>
         )
 
@@ -27,7 +27,7 @@ const Footer = ( { viewCart }: PropsType ) => {
                     {pageContent}
                 </aside>
                 <aside className="footTwo">
-                    <h2>Congo-b-Exchange template</h2>
+                    <h2>7eArche-Online-Shopping-Cart &copy; {year}</h2>
                 </aside>
             </section>
         </footer>

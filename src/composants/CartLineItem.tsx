@@ -1,5 +1,6 @@
 import { ChangeEvent, ReactElement, memo } from "react";
-import "./ComponentsStyles/CartLineItem.css"
+import "../ComponentsStyles/CartLineItem.css";
+import '../images/HuilesVegetales/huile_davocat.jpg';
 import { CartItemType, ReducerAction, ReducerActionType } from "../context/CartProvider";
 
 type PropsType = {
@@ -14,13 +15,14 @@ const CartLineItem = ( { item, dispatch, REDUCER_ACTIONS }: PropsType) => {
 
     const img: string = new URL(`${huile_davocat}`, import.meta.url).href
 
-    const lineTotal: number = (item.qty * item.prix)
+    const lineTotal: number = (item.qty * item.prixTTC)
 
     const highestQty: number = 20 > item.qty ? 20 : item.qty
     
     const optionValues: number[] = [ ...Array(highestQty).keys()].map(i => i + 1)
 
     const options: ReactElement[] = optionValues.map(val => {
+
         return <option key = { `ops${val}` } value = {val}>
                     {val}
                 </option>
@@ -41,42 +43,47 @@ const CartLineItem = ( { item, dispatch, REDUCER_ACTIONS }: PropsType) => {
     const content = (
         <ul className="cartItemContainer">
             <li className = "cartItem">
-                <img src = {img} alt = {item.name} className="cartImg"/>
-                <div aria-label = "item Name">
-                    { item.name }
-                </div>
-                <div aria-label = "Price Per Item">
-                    { new Intl.NumberFormat('fr-FR', 
-                    {style: 'currency', currency: 'EUR'})
-                    .format(item.prix)}
-                </div>
-                <div className="CartManager">
-                    <label htmlFor="itemQty" className="offscreen">
-                        Quantité
-                    </label>
-                    <br/>
-                    <select 
-                        name = "itemQty" 
-                        id = "itemQty" 
-                        className="cartSelect" 
-                        value = {item.qty}
-                        aria-label = "Item Quantity"
-                        onChange = {onChangeQty}
-                    >
-                        {options}    
-                    </select>
-                </div>
-                <div className="cartItemSubTotal" arial-label = "Line Item Subtotal">
-                    { 
-                    new Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'})
-                    .format(lineTotal)
-                    }
-                </div>
-                <button className="cartButton" 
+                <img src = {img} alt = {item.nom} className="cartImg"/>
+                <div className="CartItemDatas">
+                    <div aria-label = "item Name">
+                        <h3>{ item.designation }</h3>
+                    </div>
+                    <div aria-label = "Price Per Item" className="price">
+                        <strong>Prix unitaire : </strong>
+                        { new Intl.NumberFormat('fr-FR', 
+                        {style: 'currency', currency: 'EUR'})
+                        .format(item.prixTTC)}
+                    </div>
+                    <div className="CartManager">
+                        <label htmlFor="itemQty" className="offscreen">
+                            <strong>Quantité</strong>
+                        </label>
+                        <br/>
+                        <select 
+                            name = "itemQty" 
+                            id = "itemQty" 
+                            className="cartSelect" 
+                            value = {item.qty}
+                            aria-label = "Item Quantity"
+                            onChange = {onChangeQty}
+                        >
+                            {options}    
+                        </select>
+                    </div>
+                    <div className="cartItemSubTotal" arial-label = "Line Item Subtotal">
+                        { 
+                            new Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'})
+                            .format(lineTotal)
+                        }
+                    </div>
+                    <button 
+                        className="cartButton" 
                         aria-label = "Remove Item From Cart" 
                         title = "Remove Item From Cart"
                         onClick = {onRemoveFromCart}
-                >X</button>
+                        >Retirer L'article
+                    </button>
+                </div>
             </li>
         </ul>
     )
