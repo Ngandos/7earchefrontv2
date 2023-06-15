@@ -14,4 +14,8 @@ const Searchbar = styled.div`
 
 `;
 
-export default Searchbar;
+const SearchbarContainerInput = styled.div``;
+
+const SearchbarLabel = styled.div``;
+
+export { Searchbar, SearchbarContainerInput, SearchbarLabel };
