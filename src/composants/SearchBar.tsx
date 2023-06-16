@@ -10,7 +10,7 @@ function SearchBarInput(){
     
     const data = useContext(DataContext);
     const {
-        state: { currentSearch, SearchResults }, 
+        state: { currentSearch, searchResults }, 
         setCurrentSearch, 
         setSearchResults, 
     } = useContext<ISearchContext>(SearchContext);
@@ -23,10 +23,14 @@ function SearchBarInput(){
 
     const [sarchbarPlaceHolder, setSearchbarPlaceHolder] = useState(PlaceHolderStatus)
 
+    const [shouldBeOpen, setShouldBeOpen] = useState(true);
+    const [shouldSetResults, setShouldSetResults] = useState(true);
+    const [IsSearchbarInputHasValue, setIsSearchbarInputHasValue] = useState(false);
+
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { article, categorie, auteur, editeur } = data;
+    const { article } = data;
 
     const isSearchPage = location.pathname === '/search/';
 
@@ -34,9 +38,9 @@ function SearchBarInput(){
         articles.filter((item: InputArticleData) =>
             item.nom.toLowerCase()
             .includes((currentSearch.toLowerCase())),)
-            .sort(a, b) => 
+            .sort((a, b) => 
             a.nom.toLowerCase().length - 
-            b.nom.toLowerCase().length,
+            b.nom.toLowerCase().length,)
             .sort(sortByRelevance(currentSearch)), [articles, currentSearch],
     );
 
@@ -49,13 +53,13 @@ function SearchBarInput(){
         setSearchbarPlaceHolder(PlaceHolderStatus);
     };
     const handleReset = useCallback(() => {
-    setCurrentSearch('');
-    setIsSearchbarInputHasValue(false);
-}, [setCurrentSearch, setIsSearchInputHasValue]);
+        setCurrentSearch('');
+        setIsSearchbarInputHasValue(false);
+    }, [setCurrentSearch, setIsSearchbarInputHasValue]);
 
 const handleOnChangeSearchbarInput = (
     event: React.ChangeEvent<HTMLInputElement>,
-) => {
+    ) => {
     const searchQuery = event.target.value;
 
     if (isSearchPage) {
@@ -66,8 +70,8 @@ const handleOnChangeSearchbarInput = (
         setCurrentSearch(searchQuery);
     }
     return currentSearch.length 
-        ? setIsSearchbarHasInputValue(true)
-        : setIsSearchbarHasInputValue(false);
+        ? setIsSearchbarInputHasValue(true)
+        : setIsSearchbarInputHasValue(false);
 };
 
 const handleKeyDown = (event: any) => {
@@ -103,18 +107,17 @@ const hasPartialResults = filteredArticles.length > 0;
 const hasValidSearch = currentSearch && currentSearch.length > 1;
 
 useEffect(() => {
-    if (articles.length === 0 && articlesData.length > 0) {
-        const articlesForInput = formatArticlesDataForInput(articlesData);
+    if (articles.length === 0 && articles.length > 0) {
+        const articlesForInput = formatArticlesDataForInput(article);
         setArticles(articlesForInput);
     }
-}, [articles.length]);
+}, [article, articles.length]);
 
 useEffect(() => {
     if (isSearchPage) {
         setShouldBeOpen(true);
     }
     if (isSearchPage) {
-        const searchQuery = new URLSearchParams(location.search).get('q') ?? '';
         setShouldBeOpen(false);
 
         if (currentSearch.length === 0 && !hasPartialResults) {
@@ -123,7 +126,7 @@ useEffect(() => {
                     setSearchResults({
                         articles: filteredArticles,
                         auteurs: [],
-                        categorie: [],
+                        categories: [],
                         editeurs: []
                     });
                     setShouldSetResults(false);
@@ -134,17 +137,15 @@ useEffect(() => {
                 setSearchResults({
                     articles: filteredArticles,
                     auteurs: [],
-                    categorie: [],
+                    categories: [],
                     editeurs: []
                 });
             }
         }
     }
-}, [
-    location, hasResults, hasPartialResults, filteredArticles, currentSearch.length, 
-    searchResults, isSearchPage, shouldSetResults, setSearchResults, setCurrentSearch,
-    handleReset,
-]);
+}, [location, hasResults, hasPartialResults, filteredArticles, currentSearch.length, 
+    searchResults, isSearchPage, setSearchResults, setCurrentSearch, handleReset, 
+    shouldSetResults]);
 
 return (
     <SearchbarContainerInput
@@ -163,7 +164,7 @@ return (
             placeholder={searchbarPlaceHolder}
         />
             {
-            isSearchbarInputHasValue ? (
+            IsSearchbarInputHasValue ? (
                 <button type="button" onClick={handleReset}>
                     <img src={} alt= "icon search"/>
                 </button>
@@ -177,7 +178,7 @@ return (
                 <span className="separator"/>
                 <ul className="options">
                     {filteredArticles.length > 0 && <div className="title">Articles</div>}
-                    {filteredArticles.map((article: InputArticleData, index: number) => (
+                    {filteredArticles.map((articles: InputArticleData, index: number) => (
                         <li className={`option ${getItemSecondaryClass(filteredArticles.length, index,)}
                     `}
                     aria-label="article"
@@ -188,7 +189,7 @@ return (
                     onKeyDown={handleKeyDown}
                     >
                         <Link to={} onClick={handleReset}>
-                            {article.nom}
+                            {articles.nom}
                         </Link>
                     </li>
                     ))}

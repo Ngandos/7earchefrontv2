@@ -3,7 +3,7 @@ import { InputArticleData, InputAuteurData, InputCategorieData, InputEditeurData
 export interface SearchResults {
     articles: InputArticleData[];
     auteurs: InputAuteurData[];
-    categorie: InputCategorieData[];
+    categories: InputCategorieData[];
     editeurs: InputEditeurData[];
 }
 

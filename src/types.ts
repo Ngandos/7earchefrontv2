@@ -20,7 +20,7 @@ export interface InputClientData {
 export interface InputCategorieData {
     id: number,
     nom: string,
-    descritpion: string
+    description: string
 }
 
 export interface InputAuteurData {

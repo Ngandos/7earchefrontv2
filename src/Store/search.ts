@@ -1,26 +1,26 @@
 import { SetStateAction } from "react";
 import { ArticleType } from "../context/ArticlesProvider";
 import { CategorieType } from "../context/CategoriesProvider";
-import { InputArticleData, InputCategorieData, InputAuteurData, InputEditeurData } from "../types";
+import { InputArticleData, InputCategorieData } from "../types";
 
 
 export const formatArticlesDataForInput = (
     articles: ArticleType[],): InputArticleData[] =>
         articles.map((item: ArticleType) => ({
-            id: uniqueId(),
+            id: item.id,
             nom: `${item.nom}`,
             ref: `${item.ref}` ,
             categorie: `${item.categorie}`,
             designation: `${item.designation}`,
-            prixTTC: `${item.prixTTC}`,
+            prixTTC: item.prixTTC,
         }));
 
 export const formatCategoriesDataForInput = (
     categories: CategorieType[],): InputCategorieData[] =>
         categories.map((cat: CategorieType) => ({
-            id: uniqueId(),
+            id: cat.id,
             nom: `${cat.nom}`,
-            descritpion: `${cat.designation}`,
+            description: `${cat.designation}`,
         }));
 
 export const getItemSecondaryClass = (
