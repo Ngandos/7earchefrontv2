@@ -4,7 +4,7 @@ import { InputArticleData, InputAuteurData, InputCategorieData, InputEditeurData
 import DataContext from "../Store/DataContext";
 import { ISearchContext } from '../Store/DataContextType'
 import { memo, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { debounce, formatArticlesDataForInput, getItemSecondaryClass, sortByRelevance } from "../Store/search";
+import { debounce, formatArticlesDataForInput, getItemSecondaryClass, sortByRelevance, sortByRelevances } from "../Store/search";
 
 function SearchBarInput(){
     
@@ -21,7 +21,7 @@ function SearchBarInput(){
     const [editeurs, setEditeurs] = useState<InputEditeurData[]>([]);
     const PlaceHolderStatus = 'Titre, Auteur, Editeur, Categorie';
 
-    const [sarchbarPlaceHolder, setSearchbarPlaceHolder] = useState(PlaceHolderStatus)
+    const [searchbarPlaceHolder, setSearchbarPlaceHolder] = useState(PlaceHolderStatus)
 
     const [shouldBeOpen, setShouldBeOpen] = useState(true);
     const [shouldSetResults, setShouldSetResults] = useState(true);
@@ -30,7 +30,7 @@ function SearchBarInput(){
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { article } = data;
+    const { article, auteur, categorie, editeur } = data;
 
     const isSearchPage = location.pathname === '/search/';
 
@@ -42,6 +42,15 @@ function SearchBarInput(){
             a.nom.toLowerCase().length - 
             b.nom.toLowerCase().length,)
             .sort(sortByRelevance(currentSearch)), [articles, currentSearch],
+    );
+    const filteredAuteurs = useMemo(() => 
+        auteurs.filter((item: InputAuteurData) =>
+            item.nom.toLowerCase()
+            .includes((currentSearch.toLowerCase())),)
+            .sort((a, b) => 
+            a.nom.toLowerCase().length - 
+            b.nom.toLowerCase().length,)
+            .sort(sortByRelevances(currentSearch)), [auteurs, currentSearch],
     );
 
     // BEHAVIOR
@@ -88,7 +97,10 @@ const handleInputKeyDown = (event: any) => {
         if (event.target.value.lenght > 1) {
             setCurrentSearch(event.target.value);
             setSearchResults({
-                article: filteredArticles,
+                articles: filteredArticles,
+                auteurs: filteredAuteurs,
+                categories: filteredCategories,
+                editeurs: filteredEditeurs,
             });
             handleReset();
             navigate(`/search/?q=${event.target.value}`, {
@@ -125,9 +137,9 @@ useEffect(() => {
                 setTimeout(() => {
                     setSearchResults({
                         articles: filteredArticles,
-                        auteurs: [],
-                        categories: [],
-                        editeurs: []
+                        auteurs: filteredAuteurs,
+                        categories: filteredCategories,
+                        editeurs: filteredEditeurs,
                     });
                     setShouldSetResults(false);
                 }, 4000);
@@ -136,14 +148,14 @@ useEffect(() => {
             if (!isSearchPage) {
                 setSearchResults({
                     articles: filteredArticles,
-                    auteurs: [],
-                    categories: [],
-                    editeurs: []
+                    auteurs: filteredAuteurs,
+                    categories: filteredCategories,
+                    editeurs: filteredEditeurs,
                 });
             }
         }
     }
-}, [location, hasResults, hasPartialResults, filteredArticles, currentSearch.length, 
+}, [location, hasResults, hasPartialResults, filteredArticles, filteredAuteurs, currentSearch.length, 
     searchResults, isSearchPage, setSearchResults, setCurrentSearch, handleReset, 
     shouldSetResults]);
 
@@ -166,10 +178,10 @@ return (
             {
             IsSearchbarInputHasValue ? (
                 <button type="button" onClick={handleReset}>
-                    <img src={} alt= "icon search"/>
+                    <img src={'/images/Icons/system-search.svg'} alt= "icon search"/>
                 </button>
             ) : (
-                <img src={searchIcon} alt="Icon Search"/>
+                <img src={'/images/Icons/system-search.svg'} alt="Icon Search"/>
             )} 
         </div>
 

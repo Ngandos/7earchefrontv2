@@ -1,7 +1,7 @@
 import { SetStateAction } from "react";
 import { ArticleType } from "../context/ArticlesProvider";
 import { CategorieType } from "../context/CategoriesProvider";
-import { InputArticleData, InputCategorieData } from "../types";
+import { InputArticleData, InputAuteurData, InputCategorieData } from "../types";
 
 
 export const formatArticlesDataForInput = (
@@ -54,6 +54,28 @@ export const sortByRelevance = (inputValue: string) => (
         }
         return aIndex - bIndex;
     };
+
+    export const sortByRelevances = (inputValue: string) => (
+        a: InputAuteurData, b: InputAuteurData) => {
+            const aIndex = a.nom
+                .toLowerCase().indexOf((inputValue.toLowerCase()));
+            const bIndex = b.nom
+                .toLowerCase().indexOf((inputValue.toLowerCase()));
+    
+            if (aIndex === bIndex && inputValue.length === a.nom.length) {
+                return 0;
+            }
+            if (aIndex === bIndex) {
+                return 0;
+            }
+            if (aIndex === -1) {
+                return 1;
+            }
+            if (bIndex === -1) {
+                return -1;
+            }
+            return aIndex - bIndex;
+        };
 
     export function debounce(cb: SetStateAction<any>, delay = 1000) {
         let timeout: ReturnType<typeof setTimeout>;
