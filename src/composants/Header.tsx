@@ -12,12 +12,9 @@ const Header = ({viewCart, setViewCart}: PropsType) => {
 
     const { totalItems, totalPrice } = useCart()
 
-    const img: string = new URL(`/src/images/ID.Visuelle/${'CinemaBandeauCouleur'}.jpeg`, import.meta.url).href
-
     const content = (
         <header className="header">
             <div className="headerTitleBar">
-                <img src= {img} alt={ 'CinemaBandeauCouleur' } className='articleImg'/>
                 <h1 className='headTitle'>7éArche</h1>
             </div>
             <div className="headerPriceBox">
