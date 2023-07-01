@@ -11,6 +11,9 @@
 
 .headerTitleBar {
     width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .headTitle {
@@ -30,7 +33,5 @@
 .headerPriceBox {
     margin: 0 10px 0 10px;
     padding: 24px;
-    
-    
 }
 
