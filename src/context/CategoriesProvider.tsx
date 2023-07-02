@@ -21,7 +21,7 @@ export const CategoriesProvider = ({ children }: ChildrenType): ReactElement => 
 
     useEffect(() => {
         const fetchCategories = async (): Promise<CategorieType[]> => {
-            const data = await fetch('http://localhost:8080/demo/categories')
+            const data = await fetch('http://localhost:8080/demo/categorie')
             .then(res => {
                 return res.json()
             })

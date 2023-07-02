@@ -1,6 +1,8 @@
 import { ReactElement } from "react";
 import useCategories from "../hooks/useCategories";
 import Categorie from "./Categorie";
+import "../ComponentsStyles/CategorieList.styled.css"
+import '../images/ID.Visuelle/CinemaBandeauCouleur.jpeg';
 
 const CategorieList = () => {
 

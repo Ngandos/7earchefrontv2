@@ -11,7 +11,7 @@ const Categorie = ({ categorie }: PropsType): ReactElement => {
     
     const content = (
         <div className="wrapper">
-            <h1>Rechercher par catégories</h1>
+            <h1>{categorie.nom}</h1>
             <div className="cols">
                 <div className="col">
                     <div className="container">

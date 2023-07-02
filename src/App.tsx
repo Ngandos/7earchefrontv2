@@ -5,6 +5,7 @@ import Header from "./composants/Header"
 import Footer from "./composants/Footer"
 import Articles from "./composants/Article"
 import SearchBar from "./composants/SearchBar"
+import CategorieList from "./composants/CategorieList"
 
 function App() {
 
@@ -16,11 +17,12 @@ function App() {
     <div className='MainArea'>
       <Header viewCart = { viewCart } setViewCart = {setViewCart} />
         <SearchBar/>
+        <CategorieList/>
         { pageContent }
       <Footer viewCart={false} />
     </div>
   )
-  console.log(Articles)
+  console.log(Articles, CategorieList)
 
   return  content
 }
