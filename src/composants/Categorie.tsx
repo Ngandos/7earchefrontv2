@@ -17,17 +17,14 @@ const Categorie = ({ categorie }: PropsType): ReactElement => {
                     <div className="container">
                         <div className="front">
                             <div className="inner">
-                                <p>{categorie.nom}</p>
-                                <span>{categorie.designation}</span>
+                                <p>{categorie.id}</p>
+                                <span>{categorie.nom}</span>
                             </div>
                         </div>
                     </div>
                     <div className="back">
                         <div className="inner">
-                            <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                                Alias cum repellat velit quae suscipit c.
-                            </p>
+                            <p>{categorie.designation}</p>
                         </div>
                     </div>
                 </div>
