@@ -1,4 +1,6 @@
-import { InputArticleData, InputAuteurData, InputCategorieData, InputEditeurData } from "../types";
+import { 
+    InputArticleData, InputAuteurData, InputCategorieData, InputEditeurData 
+} from "../types";
 
 export interface SearchResults {
     articles: InputArticleData[];

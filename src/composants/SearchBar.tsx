@@ -1,25 +1,38 @@
-import {Searchbar, SearchbarContainerInput, SearchbarLabel } from "../ComponentsStyles/SearchBar.styled";
+import {
+    Searchbar, SearchbarContainerInput, SearchbarLabel 
+} from "../ComponentsStyles/SearchBar.styled";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { InputArticleData, InputAuteurData, InputCategorieData, InputEditeurData } from "../types";
+import { 
+    InputArticleData, InputAuteurData, InputCategorieData, InputEditeurData 
+} from "../types";
 import DataContext from "../Store/DataContext";
 import { ISearchContext } from '../Store/DataContextType'
-import { memo, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { debounce, formatArticlesDataForInput, getItemSecondaryClass, sortByRelevance, sortByRelevances } from "../Store/search";
+import { 
+    memo, useCallback, useContext, useEffect, useMemo, useState 
+    } from "react";
+import { 
+    debounce, formatArticlesDataForInput, formatAuteursDataForInput, 
+    formatCategoriesDataForInput, formatEditeursDataForInput, 
+    getItemSecondaryClass, sortByRelevanceArt, sortByRelevancesAut, 
+    sortByRelevancesCat, sortByRelevancesEdi 
+} from "../Store/search";
 
+// eslint-disable-next-line react-refresh/only-export-components
 function SearchBarInput(){
     
     const data = useContext(DataContext);
+    
     const {
         state: { currentSearch, searchResults }, 
         setCurrentSearch, 
         setSearchResults, 
-    } = useContext<ISearchContext>(SearchContext);
+    } = useContext<ISearchContext>(search);
 
     const [articles, setArticles] = useState<InputArticleData[]>([]);
     const [categories, setCategories] = useState<InputCategorieData[]>([]);
     const [auteurs, setAuteurs] = useState<InputAuteurData[]>([]);
     const [editeurs, setEditeurs] = useState<InputEditeurData[]>([]);
-    const PlaceHolderStatus = 'Titre, Auteur, Editeur, Categorie';
+    const PlaceHolderStatus = 'Titre, Auteur, Editeur, Categorie...';
 
     const [searchbarPlaceHolder, setSearchbarPlaceHolder] = useState(PlaceHolderStatus)
 
@@ -41,18 +54,38 @@ function SearchBarInput(){
             .sort((a, b) => 
             a.nom.toLowerCase().length - 
             b.nom.toLowerCase().length,)
-            .sort(sortByRelevance(currentSearch)), [articles, currentSearch],
+            .sort(sortByRelevanceArt(currentSearch)), [articles, currentSearch],
     );
-    const filteredAuteurs = useMemo(() => 
-        auteurs.filter((item: InputAuteurData) =>
-            item.nom.toLowerCase()
+
+    const filteredCategories = useMemo(() => 
+        categories.filter((categorie: InputCategorieData) =>
+            categorie.nom.toLowerCase()
             .includes((currentSearch.toLowerCase())),)
             .sort((a, b) => 
             a.nom.toLowerCase().length - 
             b.nom.toLowerCase().length,)
-            .sort(sortByRelevances(currentSearch)), [auteurs, currentSearch],
+            .sort(sortByRelevancesCat(currentSearch)), [categories, currentSearch],
     );
 
+    const filteredAuteurs = useMemo(() => 
+        auteurs.filter((auteur: InputAuteurData) =>
+            auteur.nom.toLowerCase()
+            .includes((currentSearch.toLowerCase())),)
+            .sort((a, b) => 
+            a.nom.toLowerCase().length - 
+            b.nom.toLowerCase().length,)
+            .sort(sortByRelevancesAut(currentSearch)), [auteurs, currentSearch],
+    );
+
+    const filteredEditeurs = useMemo(() => 
+        editeurs.filter((editeur: InputEditeurData) =>
+            editeur.enseigne.toLowerCase()
+            .includes((currentSearch.toLowerCase())),)
+            .sort((a, b) => 
+            a.enseigne.toLowerCase().length - 
+            b.enseigne.toLowerCase().length,)
+            .sort(sortByRelevancesEdi(currentSearch)), [editeurs, currentSearch],
+    );
     // BEHAVIOR
 
     const handleOnFocusSeachbarInput = () => {
@@ -106,15 +139,23 @@ const handleInputKeyDown = (event: any) => {
             navigate(`/search/?q=${event.target.value}`, {
                 state: {
                     articles: filteredArticles,
+                    auteurs: filteredAuteurs,
+                    categories: filteredCategories,
+                    editeurs: filteredEditeurs,
                 },
             });
         }
     }
 };
 
-const hasResults = filteredArticles.length > 0;
+const hasResults = 
+    filteredArticles.length > 0 && filteredAuteurs.length > 0 
+    && filteredCategories.length > 0 && filteredEditeurs.length > 0;
 
-const hasPartialResults = filteredArticles.length > 0;
+const hasPartialResults = filteredArticles.length > 0 
+    && filteredAuteurs.length > 0 
+    && filteredCategories.length > 0 
+    && filteredEditeurs.length > 0;
 
 const hasValidSearch = currentSearch && currentSearch.length > 1;
 
@@ -126,12 +167,33 @@ useEffect(() => {
 }, [article, articles.length]);
 
 useEffect(() => {
+    if (categories.length === 0 && categories.length > 0) {
+        const categoriesForInput = formatCategoriesDataForInput(categorie);
+        setCategories(categoriesForInput);
+    }
+}, [categorie, categories.length]);
+
+useEffect(() => {
+    if (auteurs.length === 0 && auteurs.length > 0) {
+        const auteursForInput = formatAuteursDataForInput(auteur);
+        setAuteurs(auteursForInput);
+    }
+}, [auteur, auteurs.length]);
+
+useEffect(() => {
+    if (editeurs.length === 0 && editeurs.length > 0) {
+        const editeursForInput = formatEditeursDataForInput(editeur);
+        setEditeurs(editeursForInput);
+    }
+}, [editeur, editeurs.length]);
+
+useEffect(() => {
     if (isSearchPage) {
         setShouldBeOpen(true);
     }
+
     if (isSearchPage) {
         setShouldBeOpen(false);
-
         if (currentSearch.length === 0 && !hasPartialResults) {
             if (isSearchPage && shouldSetResults) {
                 setTimeout(() => {
@@ -144,7 +206,6 @@ useEffect(() => {
                     setShouldSetResults(false);
                 }, 4000);
             }
-
             if (!isSearchPage) {
                 setSearchResults({
                     articles: filteredArticles,
@@ -155,7 +216,8 @@ useEffect(() => {
             }
         }
     }
-}, [location, hasResults, hasPartialResults, filteredArticles, filteredAuteurs, currentSearch.length, 
+}, [location, hasResults, hasValidSearch, hasPartialResults, filteredArticles, filteredAuteurs, 
+    filteredCategories, filteredEditeurs, currentSearch.length, 
     searchResults, isSearchPage, setSearchResults, setCurrentSearch, handleReset, 
     shouldSetResults]);
 
@@ -163,6 +225,9 @@ return (
     <SearchbarContainerInput
         hasValidSearch={hasValidSearch}
         filteredArticles={hasResults}
+        filteredAuteurs={hasResults}
+        filteredCategories={hasResults}
+        filteredEditeurs={hasResults}
         setShouldBeOpen={shouldBeOpen}
     >
         <div className="input-wrapper">
@@ -200,18 +265,91 @@ return (
                     aria-selected="true"
                     onKeyDown={handleKeyDown}
                     >
-                        <Link to={} onClick={handleReset}>
+                        <Link to={articles.nom} onClick={handleReset}>
                             {articles.nom}
                         </Link>
                     </li>
                     ))}
                 </ul>
             </div>
-            )}
+        )} 
+        
+        {shouldBeOpen && hasValidSearch && hasResults && (
+            <div className="options-wrapper">
+                <span className="separator"/>
+                <ul className="options">
+                    {filteredCategories.length > 0 && <div className="title">Categorie</div>}
+                    {filteredCategories.map((categorie: InputCategorieData, index: number) => (
+                        <li className={`option ${getItemSecondaryClass(filteredCategories.length, index,)}
+                    `}
+                    aria-label="categorie"
+                    key={categorie.id}
+                    tabIndex={0}
+                    role="option"
+                    aria-selected="true"
+                    onKeyDown={handleKeyDown}
+                    >
+                        <Link to={categorie.nom} onClick={handleReset}>
+                            {categorie.nom}
+                        </Link>
+                    </li>
+                    ))}
+                </ul>
+            </div>
+        )}
+
+        {shouldBeOpen && hasValidSearch && hasResults && (
+            <div className="options-wrapper">
+                <span className="separator"/>
+                <ul className="options">
+                    {filteredAuteurs.length > 0 && <div className="title">Auteurs</div>}
+                    {filteredAuteurs.map((auteur: InputAuteurData, index: number) => (
+                        <li className={`option ${getItemSecondaryClass(filteredAuteurs.length, index,)}
+                    `}
+                    aria-label="auteur"
+                    key={auteur.id}
+                    tabIndex={0}
+                    role="option"
+                    aria-selected="true"
+                    onKeyDown={handleKeyDown}
+                    >
+                        <Link to={auteur.nom} onClick={handleReset}>
+                            {auteur.nom}
+                        </Link>
+                    </li>
+                    ))}
+                </ul>
+            </div>
+        )}
+
+        {shouldBeOpen && hasValidSearch && hasResults && (
+            <div className="options-wrapper">
+                <span className="separator"/>
+                <ul className="options">
+                    {filteredEditeurs.length > 0 && <div className="title">Editeurs</div>}
+                    {filteredEditeurs.map((editeur: InputEditeurData, index: number) => (
+                        <li className={`option ${getItemSecondaryClass(filteredEditeurs.length, index,)}
+                    `}
+                    aria-label="editeur"
+                    key={editeur.id}
+                    tabIndex={0}
+                    role="option"
+                    aria-selected="true"
+                    onKeyDown={handleKeyDown}
+                    >
+                        <Link to={editeur.enseigne} onClick={handleReset}>
+                            {editeur.enseigne}
+                        </Link>
+                    </li>
+                    ))}
+                </ul>
+            </div>
+        )}
     </SearchbarContainerInput>
     );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 const SearchBar = () => {
 
     return (
@@ -222,4 +360,5 @@ const SearchBar = () => {
     )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default memo(SearchBar);

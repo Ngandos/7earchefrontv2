@@ -1,7 +1,9 @@
 import { SetStateAction } from "react";
 import { ArticleType } from "../context/ArticlesProvider";
 import { CategorieType } from "../context/CategoriesProvider";
-import { InputArticleData, InputAuteurData, InputCategorieData } from "../types";
+import { InputArticleData, InputAuteurData, InputCategorieData, InputEditeurData } from "../types";
+import { AuteurType } from "../context/AuteursProvider";
+import { EditeurType } from "../context/EditeursProvider";
 
 
 export const formatArticlesDataForInput = (
@@ -20,7 +22,21 @@ export const formatCategoriesDataForInput = (
         categories.map((cat: CategorieType) => ({
             id: cat.id,
             nom: `${cat.nom}`,
-            description: `${cat.designation}`,
+            description: `${cat.description}`,
+        }));
+
+export const formatAuteursDataForInput = (
+    auteurs: AuteurType[],): InputAuteurData[] =>
+        auteurs.map((auteur: AuteurType) => ({
+            id: auteur.id,
+            nom: `${auteur.nom}`,
+        }));
+
+export const formatEditeursDataForInput = (
+    editeurs: EditeurType[],): InputEditeurData[] =>
+        editeurs.map((editeur: EditeurType) => ({
+            id: editeur.id,
+            enseigne: `${editeur.enseigne}`,
         }));
 
 export const getItemSecondaryClass = (
@@ -33,7 +49,7 @@ export const getItemSecondaryClass = (
     return '';
 };
 
-export const sortByRelevance = (inputValue: string) => (
+export const sortByRelevanceArt = (inputValue: string) => (
     a: InputArticleData, b: InputArticleData) => {
         const aIndex = a.nom
             .toLowerCase().indexOf((inputValue.toLowerCase()));
@@ -55,7 +71,29 @@ export const sortByRelevance = (inputValue: string) => (
         return aIndex - bIndex;
     };
 
-    export const sortByRelevances = (inputValue: string) => (
+    export const sortByRelevancesCat = (inputValue: string) => (
+        a: InputCategorieData, b: InputCategorieData) => {
+            const aIndex = a.nom
+                .toLowerCase().indexOf((inputValue.toLowerCase()));
+            const bIndex = b.nom
+                .toLowerCase().indexOf((inputValue.toLowerCase()));
+    
+            if (aIndex === bIndex && inputValue.length === a.nom.length) {
+                return 0;
+            }
+            if (aIndex === bIndex) {
+                return 0;
+            }
+            if (aIndex === -1) {
+                return 1;
+            }
+            if (bIndex === -1) {
+                return -1;
+            }
+            return aIndex - bIndex;
+        };
+
+    export const sortByRelevancesAut = (inputValue: string) => (
         a: InputAuteurData, b: InputAuteurData) => {
             const aIndex = a.nom
                 .toLowerCase().indexOf((inputValue.toLowerCase()));
@@ -63,6 +101,28 @@ export const sortByRelevance = (inputValue: string) => (
                 .toLowerCase().indexOf((inputValue.toLowerCase()));
     
             if (aIndex === bIndex && inputValue.length === a.nom.length) {
+                return 0;
+            }
+            if (aIndex === bIndex) {
+                return 0;
+            }
+            if (aIndex === -1) {
+                return 1;
+            }
+            if (bIndex === -1) {
+                return -1;
+            }
+            return aIndex - bIndex;
+        };
+
+    export const sortByRelevancesEdi = (inputValue: string) => (
+        a: InputEditeurData, b: InputEditeurData) => {
+            const aIndex = a.enseigne
+                .toLowerCase().indexOf((inputValue.toLowerCase()));
+            const bIndex = b.enseigne
+                .toLowerCase().indexOf((inputValue.toLowerCase()));
+    
+            if (aIndex === bIndex && inputValue.length === a.enseigne.length) {
                 return 0;
             }
             if (aIndex === bIndex) {

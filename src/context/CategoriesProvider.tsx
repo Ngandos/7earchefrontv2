@@ -3,7 +3,7 @@ import { ReactElement, createContext, useState, useEffect } from "react"
 export type CategorieType = {
     id: number,
     nom: string,
-    designation: string
+    description: string
 }
 
 const initState: CategorieType[] = []
@@ -21,7 +21,7 @@ export const CategoriesProvider = ({ children }: ChildrenType): ReactElement => 
 
     useEffect(() => {
         const fetchCategories = async (): Promise<CategorieType[]> => {
-            const data = await fetch('http://localhost:3500/categories')
+            const data = await fetch('http://localhost:8080/demo/Categorie')
             .then(res => {
                 return res.json()
             })
