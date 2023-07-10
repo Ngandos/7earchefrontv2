@@ -5,6 +5,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { 
     InputArticleData, InputAuteurData, InputCategorieData, InputEditeurData 
 } from "../types";
+import { Context as SearchContext } from '../Store/SearchResults'; 
 import DataContext from "../Store/DataContext";
 import { ISearchContext } from '../Store/DataContextType'
 import { 
@@ -26,7 +27,7 @@ function SearchBarInput(){
         state: { currentSearch, searchResults }, 
         setCurrentSearch, 
         setSearchResults, 
-    } = useContext<ISearchContext>(search);
+    } = useContext<ISearchContext>(SearchContext);
 
     const [articles, setArticles] = useState<InputArticleData[]>([]);
     const [categories, setCategories] = useState<InputCategorieData[]>([]);
@@ -116,6 +117,7 @@ const handleOnChangeSearchbarInput = (
         : setIsSearchbarInputHasValue(false);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const handleKeyDown = (event: any) => {
     if (event.target && event.key === 'Enter') {
         const link = event?.target?.firstChild?.href?.split('/');
@@ -125,6 +127,7 @@ const handleKeyDown = (event: any) => {
     }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const handleInputKeyDown = (event: any) => {
     if (event.target && event.key ===  'Enter') {
         if (event.target.value.lenght > 1) {
@@ -232,13 +235,13 @@ return (
     >
         <div className="input-wrapper">
             <input className="searchbar-input"
-            type="search"
-            value={currentSearch}
-            onChange={handleOnChangeSearchbarInput}
-            onFocus={handleOnFocusSeachbarInput}
-            onBlur={handelOnBlurSearchbarInput}
-            onKeyDown={handleInputKeyDown}
-            placeholder={searchbarPlaceHolder}
+                type="search"
+                value={currentSearch}
+                onChange={handleOnChangeSearchbarInput}
+                onFocus={handleOnFocusSeachbarInput}
+                onBlur={handelOnBlurSearchbarInput}
+                onKeyDown={handleInputKeyDown}
+                placeholder={searchbarPlaceHolder}
         />
             {
             IsSearchbarInputHasValue ? (

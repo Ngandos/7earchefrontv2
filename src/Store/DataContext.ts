@@ -16,7 +16,7 @@ export const defaultState = {
     auteur: [],
     categorie: [],
     editeur: [],
-}
+};
 
 const DataContext = createContext<DataContextType>(defaultState);
 
