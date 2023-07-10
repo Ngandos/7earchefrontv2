@@ -1,6 +1,6 @@
 import useCategories from "../hooks/useCategorie";
 import { ReactElement } from "react";
-import Categorie from "";
+import Categorie from "./Categorie";
 import '../ComponentsStyles/ArticleList.css';
 
 const CategorieList = () => {
