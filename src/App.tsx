@@ -5,7 +5,9 @@ import Header from "./composants/Header"
 import Footer from "./composants/Footer"
 import Articles from "./composants/Article"
 import SearchBar from "./composants/SearchBar"
-import CategorieList from "./composants/CategorieList"
+import CategorieList from "./composants/CategorieList";
+import './App.css'
+import MenuNav from "./composants/MenuNav/MenuNav"
 
 function App() {
 
@@ -16,9 +18,11 @@ function App() {
   const content = (
     <div className='MainArea'>
       <Header viewCart = { viewCart } setViewCart = {setViewCart} />
+      <div className="middle">
+        <MenuNav/>
         <SearchBar/>
-        <CategorieList/>
-        { pageContent }
+      </div>
+      { pageContent }
       <Footer viewCart={false} />
     </div>
   )
