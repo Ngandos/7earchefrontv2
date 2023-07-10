@@ -1,5 +1,5 @@
 import useCart from "../hooks/useCart";
-import useArticles from "../hooks/useArticles";
+import useArticles from "../hooks/useArticle";
 import { ReactElement } from "react";
 import Article from "./Article";
 import '../ComponentsStyles/ArticleList.css';

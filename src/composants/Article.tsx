@@ -1,5 +1,5 @@
 import { ReactElement, memo } from 'react';
-import { ArticleType } from '../context/ArticlesProvider';
+import { ArticleType } from '../context/ArticleProvider';
 import { ReducerActionType, ReducerAction } from '../context/CartProvider';
 import '../ComponentsStyles/ArticleStyled.css';
 import '../images/HuilesVegetales/huile_davocat.jpg'; 
