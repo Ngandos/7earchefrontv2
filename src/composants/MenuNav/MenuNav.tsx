@@ -8,7 +8,7 @@ const MenuNav = () => {
             <div className="navlist">
               <button className="butt"><p>Categories</p></button>
               <button className="butt"><p>Mon compte</p></button>
-              <button className="butt"><p>Créer Un compte</p></button>
+              <button className="butt"><p>Créer un compte</p></button>
               <button className="butt"><p>Se connecter</p></button>
             </div>
         </NavPages>

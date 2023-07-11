@@ -18,13 +18,20 @@
 }
 
 .middle {
-  width: 95%;
+  width: 90%;
   height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: auto;
   margin-top: 2%;
   padding: 24px;
   background-color: burlywood;
+  border: black solid 1px;
+  border-radius: 0.5rem;
+  @media all and (min-width: 320px) and (max-width: 670px){
+        width: auto;
+        flex-direction: column;
+    }
 }
