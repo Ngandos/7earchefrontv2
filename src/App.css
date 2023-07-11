@@ -31,7 +31,7 @@
   border: black solid 1px;
   border-radius: 0.5rem;
   @media all and (min-width: 320px) and (max-width: 670px){
-        width: auto;
+        width: 80%;
         flex-direction: column;
     }
 }
