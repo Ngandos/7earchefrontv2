@@ -23,7 +23,7 @@ const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }:
 
         const content = (
             <article className='article'>
-                <h3>{ article.designation }</h3>
+                <h5>{ article.designation }</h5>
                 <img src= {img} alt={ article.designation } className='articleImg'/>
                 <strong>
                     <p>
