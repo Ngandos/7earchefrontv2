@@ -17,7 +17,7 @@ const Cart = () => {
 
     const pageContent = confirm ? (
 
-            <h2>Thanks for your order.</h2> 
+            <h2>Nous vous remercions pour vos achats !!!!.</h2> 
         ) : (
                 <div className="CartContent">
                     <h1 className="offScreen">Panier</h1>

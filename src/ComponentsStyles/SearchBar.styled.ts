@@ -19,6 +19,9 @@ const Searchbar = styled.div`
         padding: 10px;
         display: flex;
         align-items: flex-start;
+        @media all and (min-width: 320px) and (max-width: 670px){
+            width: 100%;
+        }
     }
     @media all and (min-width: 320px) and (max-width: 670px){
         width: 95%;

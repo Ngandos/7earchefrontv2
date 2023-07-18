@@ -14,7 +14,6 @@ const NavPages = styled.div `
         @media all and (min-width: 320px) and (max-width: 670px){
             width: 100%;
             margin: auto;
-            margin-bottom: 10%;
         }
     }
     .butt {
@@ -26,8 +25,7 @@ const NavPages = styled.div `
         }
     }
     @media all and (min-width: 320px) and (max-width: 670px){
-        display: flex;
-        padding: auto;
+        margin-top: 10%;
     }    
 `;
 
