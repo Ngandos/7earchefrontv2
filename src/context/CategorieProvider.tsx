@@ -3,7 +3,7 @@ import { ReactElement, createContext, useState, useEffect } from "react"
 export type CategorieType = {
     id: number,
     nom: string,
-    description: string
+    designation: string
 }
 
 const initState: CategorieType[] = []
@@ -21,7 +21,7 @@ export const CategoriesProvider = ({ children }: ChildrenType): ReactElement => 
 
     useEffect(() => {
         const fetchCategories = async (): Promise<CategorieType[]> => {
-            const data = await fetch('http://localhost:3500/categorie')
+            const data = await fetch('http://localhost:3500/categories')
             .then(res => {
                 return res.json()
             })
@@ -40,5 +40,3 @@ export const CategoriesProvider = ({ children }: ChildrenType): ReactElement => 
         </CategoriesContext.Provider>
     )
 }
-
-export default CategoriesContext;

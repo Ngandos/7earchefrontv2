@@ -1,23 +1,25 @@
-import useCategories from "../hooks/useCategorie";
 import { ReactElement } from "react";
+import useCategories from "../hooks/useCategorie";
 import Categorie from "./Categorie";
-import '../ComponentsStyles/ArticleList.css';
+import "../ComponentsStyles/CategorieList.styled.css"
+import '../images/ID.Visuelle/CinemaBandeauCouleur.jpeg';
 
 const CategorieList = () => {
+
+
 
     const { Categories } = useCategories()
 
     let pageContent: ReactElement | ReactElement[] = <p>Loading...</p>
 
     if (Categories?.length) {
-        pageContent = Categories.map(categorie => {
-
+        pageContent = Categories.map(categorie  => {
             return (
                 <Categorie
-                    id = {categorie.id}
+                    key = {categorie.id}
                     categorie = { categorie }
                     nom = { categorie.nom }
-                    description = { categorie.description }
+                    designation = { categorie.designation }
                 />
             )
         })

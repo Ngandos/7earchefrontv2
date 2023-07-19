@@ -1,10 +1,11 @@
-import { useState } from "react"
-import Cart from "./composants/Cart"
-import ArticleList from "./composants/ArticleList"
-import Header from "./composants/Header"
-import Footer from "./composants/Footer"
-import Articles from "./composants/Article"
-import SearchBar from "./composants/SearchBar"
+import { useState } from "react";
+import Cart from "./composants/Cart";
+import ArticleList from "./composants/ArticleList";
+import Header from "./composants/Header";
+import Footer from "./composants/Footer";
+import SearchBar from "./composants/SearchBar";
+import './App.css';
+import MenuNav from "./composants/MenuNav/MenuNav";
 
 function App() {
 
@@ -15,12 +16,14 @@ function App() {
   const content = (
     <div className='MainArea'>
       <Header viewCart = { viewCart } setViewCart = {setViewCart} />
+      <div className="middle">
+        <MenuNav/>
         <SearchBar/>
-        { pageContent }
+      </div>
+      { pageContent }
       <Footer viewCart={false} />
     </div>
   )
-  console.log(Articles)
 
   return  content
 }

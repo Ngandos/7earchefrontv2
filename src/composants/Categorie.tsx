@@ -4,9 +4,8 @@ import '../ComponentsStyles/Categorie.styled.css';
 
 type PropsType = {
     categorie: CategorieType;
-    id: number;
     nom: string;
-    description: string;
+    designation: string;
  }
 
 const Categorie = ({ categorie }: PropsType): ReactElement => {
@@ -26,7 +25,7 @@ const Categorie = ({ categorie }: PropsType): ReactElement => {
                     </div>
                     <div className="back">
                         <div className="inner">
-                            <p>{categorie.description}</p>
+                            <p>{categorie.designation}</p>
                         </div>
                     </div>
                 </div>

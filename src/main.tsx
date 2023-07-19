@@ -4,12 +4,16 @@ import App from './App.tsx'
 import './index.css'
 import { ArticlesProvider } from './context/ArticleProvider.tsx'
 import { CartProvider } from './context/CartProvider.tsx'
+import { CategoriesProvider } from './context/CategoriesProvider.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  
   <React.StrictMode>
     <ArticlesProvider>
       <CartProvider>
-        <App />
+        <CategoriesProvider>
+          <App />
+        </CategoriesProvider>
       </CartProvider>
     </ArticlesProvider>
   </React.StrictMode>,
