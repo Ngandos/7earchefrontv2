@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { CategorieType } from '../context/CategoriesProvider';
+import { CategorieType } from '../context/CategorieProvider';
 import '../ComponentsStyles/Categorie.styled.css';
 
 type PropsType = {
