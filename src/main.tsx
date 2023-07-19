@@ -4,7 +4,7 @@ import App from './App.tsx'
 import './index.css'
 import { ArticlesProvider } from './context/ArticleProvider.tsx'
 import { CartProvider } from './context/CartProvider.tsx'
-import { CategoriesProvider } from './context/CategoriesProvider.tsx';
+import { CategoriesProvider } from './context/CategorieProvider.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   
