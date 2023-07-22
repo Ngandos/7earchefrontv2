@@ -8,9 +8,9 @@ const MenuNav = () => {
         <NavPages>
             <div className="navlist">
                 <Link className="butt" to="/categorie">Categories</Link>
-                <Link className="butt" to="/monCompte">Mon compte</Link>
+                <Link className="butt" to="/cart">Mon compte</Link>
                 <Link className="butt" to="/créerUnCompte">Créer un compte</Link>
-                <Link className="butt" to="/seConnecter">Se connecter</Link>
+                <Link className="butt" to="/connexion">Se connecter</Link>
             </div>
         </NavPages>
     )

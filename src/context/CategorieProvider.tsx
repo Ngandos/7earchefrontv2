@@ -3,7 +3,7 @@ import { ReactElement, createContext, useState, useEffect } from "react"
 export type CategorieType = {
     id: number,
     nom: string,
-    designation: string
+    description: string
 }
 
 const initState: CategorieType[] = []
