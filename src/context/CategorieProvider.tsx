@@ -40,3 +40,5 @@ export const CategoriesProvider = ({ children }: ChildrenType): ReactElement => 
         </CategoriesContext.Provider>
     )
 }
+
+export default CategoriesContext;

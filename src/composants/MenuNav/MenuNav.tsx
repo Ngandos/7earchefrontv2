@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './MenuNav.styled';
 import NavPages from './MenuNav.styled';
 
@@ -6,10 +7,10 @@ const MenuNav = () => {
     return (
         <NavPages>
             <div className="navlist">
-              <button className="butt"><p>Categories</p></button>
-              <button className="butt"><p>Mon compte</p></button>
-              <button className="butt"><p>Créer un compte</p></button>
-              <button className="butt"><p>Se connecter</p></button>
+                <Link className="butt" to="/categorie">Categories</Link>
+                <Link className="butt" to="/monCompte">Mon compte</Link>
+                <Link className="butt" to="/créerUnCompte">Créer un compte</Link>
+                <Link className="butt" to="/seConnecter">Se connecter</Link>
             </div>
         </NavPages>
     )

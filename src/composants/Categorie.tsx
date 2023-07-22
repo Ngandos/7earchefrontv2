@@ -11,6 +11,7 @@ type PropsType = {
 const Categorie = ({ categorie }: PropsType): ReactElement => {
     
     const content = (
+        
         <div className="wrapper">
             <h1>{categorie.nom}</h1>
             <div className="cols">
@@ -22,12 +23,12 @@ const Categorie = ({ categorie }: PropsType): ReactElement => {
                                 <span>{categorie.nom}</span>
                             </div>
                         </div>
-                    </div>
-                    <div className="back">
-                        <div className="inner">
-                            <p>{categorie.designation}</p>
+                        <div className="back">
+                            <div className="inner">
+                                <p>{categorie.designation}</p>
+                            </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
