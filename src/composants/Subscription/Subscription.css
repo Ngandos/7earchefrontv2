@@ -1,0 +1,8 @@
+.subLabel,
+input {
+  width: 90%;
+  margin-bottom: 2%;
+  display: flex;
+  border-bottom: black solid 1px;
+}
+
