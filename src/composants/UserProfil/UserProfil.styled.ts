@@ -2,4 +2,7 @@ import { styled } from 'styled-components';
 
 const UserProfil = styled.section``;
 
-export default UserProfil;
+const ProfilCard = styled.div``;
+
+export { UserProfil, ProfilCard };
+

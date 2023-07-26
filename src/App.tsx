@@ -10,21 +10,12 @@ import { Routes, Route } from 'react-router-dom';
 import ArticleList from './composants/ArticleList';
 import Connexion from './composants/LogIn/Connexion';
 import Subscription from './composants/Subscription/Subscription';
+import UserProfil from './composants/UserProfil/UserProfil';
 
 function App() {
   const [viewCart, setViewCart] = useState(false);
 
   const pageContent = <Routes />;
-
-  // if (location.pathname === "/categorie") {
-  //   pageContent === <CategorieList/>
-  // }
-  // else if (location.pathname === "/") {
-  //   pageContent === <ArticleList/>
-  // }
-  // else if (location.pathname === "/Cart") {
-  //   pageContent === <Cart/>
-  // }
 
   const content = (
     <div className='MainArea'>
@@ -39,6 +30,7 @@ function App() {
         <Route path='/cart' element={<Cart />} />
         <Route path='/CréerUnCompte' element={<Subscription />} />
         <Route path='/connexion' element={<Connexion />} />
+        <Route path='/monCompte' element={<UserProfil />} />
       </Routes>
       {pageContent}
       <Footer viewCart={false} />

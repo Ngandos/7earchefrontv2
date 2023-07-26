@@ -1,10 +1,13 @@
 import { styled } from 'styled-components';
 
 const SubscribForm = styled.section`
-  width: 50%;
+  width: 40%;
   margin: auto;
+  margin-top: 5%;
   padding: 24px;
-  border: black solid 2px;
+  border: black solid 1px;
+  border-radius: 0.5rem;
+  background-color: burlywood;
 `;
 
 const FormContainer = styled.div`

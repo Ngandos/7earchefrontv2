@@ -19,15 +19,20 @@ const Subscription = () => {
           <p>Adresse :</p>
         </label>
         <input type='text' placeholder='Adresse' />
+
         <label className='SubLabel' htmlFor='Telephone'>
           <p>Téléphone :</p>
         </label>
         <input type='text' placeholder='Telephone' />
-        <label className='SubLabel' htmlFor='PostCode' placeholder='PostCode'>
+
+        <label className='SubLabel' htmlFor='PostCode'>
           <p>Code Postal :</p>
         </label>
-        <input type='text' />
-        <input type='submit' value='Envoyer' />
+        <input type='text' placeholder='Code postal' />
+
+        <button type='submit' value='Envoyer'>
+          Envoi
+        </button>
       </FormContainer>
     </SubscribForm>
   );
