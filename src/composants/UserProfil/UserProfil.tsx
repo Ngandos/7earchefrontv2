@@ -7,11 +7,19 @@ const UserProfil = () => {
         <img src='' alt='' />
       </div>
       <div className='details'>
-        <p>Nom : Balumé</p>
-        <p>Prenom : Innocent</p>
-        <p>Pseudo : Innoss</p>
+        <strong>
+          <p>Nom : Balumé</p>
+        </strong>
+        <strong>
+          <p>Prenom : Innocent</p>
+        </strong>
+        <strong>
+          <p>Pseudo : Innoss</p>
+        </strong>
       </div>
-      <div className='Second'></div>
+      <div className='Second'>
+        <p>Historique d'achat</p>
+      </div>
     </ProfilCard>
   );
 };
