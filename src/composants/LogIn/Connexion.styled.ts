@@ -11,13 +11,27 @@ const ConnectForm = styled.div`
     background-color: burlywood;
     border-radius: 0.5rem;
     border: black solid 1px;
+    color: black;
+
     label {
         width: 50%;
         margin: auto;
+        text-align: start;
     }
+
     input {
         width: 50%;
         margin: auto;
+        color: black;
+    }
+
+    .connect {
+        width: 50%;
+        margin: auto;
+    
+        @media all and (min-width: 320px) and (max-width: 670px){
+            width: 50%;
+        }
     }
     
 `;

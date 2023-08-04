@@ -7,6 +7,7 @@ const Searchbar = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     .search {
         width: 100%;
         height: 30px;
@@ -15,11 +16,13 @@ const Searchbar = styled.div`
         background-color: white;
         border-radius: 1rem;
     }
+
     .searchLab {
         padding: 10px;
         display: flex;
         align-items: flex-start;
     }
+    
     @media all and (min-width: 320px) and (max-width: 670px){
         width: 95%;
     }
