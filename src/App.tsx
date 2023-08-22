@@ -1,31 +1,43 @@
-import { useState } from "react";
-import Cart from "./composants/Cart";
-import ArticleList from "./composants/ArticleList";
-import Header from "./composants/Header";
-import Footer from "./composants/Footer";
-import SearchBar from "./composants/SearchBar";
+import { useState } from 'react';
+import Cart from './composants/Cart';
+import Header from './composants/Header';
+import Footer from './composants/Footer';
+import SearchBar from './composants/SearchBar';
 import './App.css';
-import MenuNav from "./composants/MenuNav/MenuNav";
+import MenuNav from './composants/MenuNav/MenuNav';
+import CategorieList from './composants/CategorieList';
+import { Routes, Route } from 'react-router-dom';
+import ArticleList from './composants/ArticleList';
+import Connexion from './composants/LogIn/Connexion';
+import Subscription from './composants/Subscription/Subscription';
+import UserProfil from './composants/UserProfil/UserProfil';
 
 function App() {
+  const [viewCart, setViewCart] = useState(false);
 
-  const [viewCart, setViewCart] = useState(false)
-
-  const pageContent = viewCart ? <Cart/> : <ArticleList/>
+  const pageContent = <Routes />;
 
   const content = (
     <div className='MainArea'>
-      <Header viewCart = { viewCart } setViewCart = {setViewCart} />
-      <div className="middle">
-        <MenuNav/>
-        <SearchBar/>
+      <Header viewCart={viewCart} setViewCart={setViewCart} />
+      <div className='middle'>
+        <MenuNav />
+        <SearchBar />
       </div>
-      { pageContent }
+      <Routes>
+        <Route path='/' element={<ArticleList />} />
+        <Route path='/categorie' element={<CategorieList />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/CréerUnCompte' element={<Subscription />} />
+        <Route path='/connexion' element={<Connexion />} />
+        <Route path='/monCompte' element={<UserProfil />} />
+      </Routes>
+      {pageContent}
       <Footer viewCart={false} />
     </div>
-  )
+  );
 
-  return  content
+  return content;
 }
 
 export default App;

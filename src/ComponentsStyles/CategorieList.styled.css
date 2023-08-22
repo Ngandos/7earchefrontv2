@@ -1,6 +1,12 @@
 main {
+    width: 90%;
+    margin : 4% auto;
+    padding: 24px;
+    background-color: burlywood;
     display: flex;
     flex-direction: row;
+    border-radius: 0.5rem;
+    border: black solid 1px;
 }
 
 .rotation3d {
