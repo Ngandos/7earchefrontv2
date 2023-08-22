@@ -1,7 +1,7 @@
 import useCart from "../hooks/useCart";
 import { useState } from "react";
 import CartLineItem from "./CartLineItem";
-import '../ComponentsStyles/CartStyled.css'
+import '../ComponentsStyles/CartStyled.css';
 
 const Cart = () => {
 
@@ -13,12 +13,15 @@ const Cart = () => {
         dispatch({ type: REDUCER_ACTIONS.SUBMIT })
         setConfirm(true)
     }
+    console.log(Cart)
 
     const pageContent = confirm ? (
+
             <h2>Thanks for your order.</h2> 
         ) : (
                 <div className="CartContent">
-                    <h2 className="offscren">Panier</h2>
+                    <h1 className="offScreen">Panier</h1>
+                    <br/>
                     <ul className="cart">
                         {cart.map(item => {
                             return (
@@ -32,16 +35,17 @@ const Cart = () => {
                         })}
                     </ul>
                     <div className="cartTotals">
-                        <p>Total Articles: {totalItems}</p>
-                        <p>Total Prices: {totalPrice}</p>
+                        <p>Total des Articles de la commande : {totalItems}</p>
+                        <p>Prix total de la commande : {totalPrice}</p>
                         <button className ="cartSubmit" disabled = {!totalItems} 
                             onClick = {onSubmitOrder}
                         >
-                            Valider la commande
+                            <p>Valider la commande</p>
                         </button>
                     </div>
                 </div>
             )
+
             const content = (
                 <main className="main main--cart">
                     { pageContent }

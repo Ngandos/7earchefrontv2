@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Cart from './composants/Cart';
+import Header from './composants/Header';
+import Footer from './composants/Footer';
+import SearchBar from './composants/SearchBar';
+import './App.css';
+import MenuNav from './composants/MenuNav/MenuNav';
+import CategorieList from './composants/CategorieList';
+import { Routes, Route } from 'react-router-dom';
+import ArticleList from './composants/ArticleList';
+import Connexion from './composants/LogIn/Connexion';
+import Subscription from './composants/Subscription/Subscription';
+import UserProfil from './composants/UserProfil/UserProfil';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [viewCart, setViewCart] = useState(false);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+  const pageContent = <Routes />;
+
+  const content = (
+    <div className='MainArea'>
+      <Header viewCart={viewCart} setViewCart={setViewCart} />
+      <div className='middle'>
+        <MenuNav />
+        <SearchBar />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <Routes>
+        <Route path='/' element={<ArticleList />} />
+        <Route path='/categorie' element={<CategorieList />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/CréerUnCompte' element={<Subscription />} />
+        <Route path='/connexion' element={<Connexion />} />
+        <Route path='/monCompte' element={<UserProfil />} />
+      </Routes>
+      {pageContent}
+      <Footer viewCart={false} />
+    </div>
+  );
+
+  return content;
 }
 
-export default App
+export default App;
+

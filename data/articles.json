@@ -2,54 +2,104 @@
     "articles": [
         
         {
-            "sku": "item0001",
-            "name": "Beurre de Karité 250g",
-            "prix": 9.99
+            "id": "1",
+            "ref": "item0001",
+            "categorie": "Livres",
+            "nom": "Les Misérables",
+            "prixHT": 9.99,
+            "prixTTC": 9.99,
+            "tva": "0.2",
+            "designation": "D'apres le roman de V.Hugo..."
         },
         {
-            "sku": "item0002",
-            "name": "Beurre de Karité 150g",
-            "prix": 9.99
+            "id": "2",
+            "ref": "item0002",
+            "categorie": "Livres",
+            "nom": "Les Fleurs du mal",
+            "prixHT": 9.99,
+            "prixTTC": 9.99, 
+            "tva": "0.2",
+            "designation": ""
         },
         {
-            "sku": "item0003",
-            "name": "Huile de ricin 30 ml",
-            "prix": 9.99
+            "id": "3",
+            "ref": "item0003",
+            "categorie": "Livres",
+            "nom": "Entretien avec un vampire",
+            "prixHT": 9.99,
+            "prixTTC": 9.99, 
+            "tva": "0.2",
+            "designation": ""
         },
         {
-            "sku": "Savons au karité",
-            "name": "Livre 4",
-            "prix": 9.99
+            "id": "4",
+            "ref": "item0004",
+            "categorie": "Livres",
+            "nom": "20000 Lieues Sous Les Mers",
+            "prixHT": 9.99,
+            "prixTTC": 9.99, 
+            "tva": "0.2",
+            "designation": ""
         },
         {
-            "sku": "item0005",
-            "name": "Livre 5",
-            "prix": 9.99
+            "id": "5",
+            "ref": "item0005",
+            "categorie": "Livres",
+            "nom": "Livre 5",
+            "prixHT": 9.99,
+            "prixTTC": 9.99, 
+            "tva": "0.2",
+            "designation": ""
         },
         {
-            "sku": "item0006",
-            "name": "Livre 6",
-            "prix": 9.99
+            "id": "6",
+            "ref": "item0006",
+            "categorie": "Livres",
+            "nom": "Livre 6",
+            "prixHT": 9.99,
+            "prixTTC": 9.99, 
+            "tva": "0.2",
+            "designation": ""
         },
         {
-            "sku": "item0007",
-            "name": "Livre 7",
-            "prix": 9.99
+            "id": "7",
+            "ref": "item0007",
+            "categorie": "Livres",
+            "nom": "Livre 7",
+            "prixHT": 9.99,
+            "prixTTC": 9.99, 
+            "tva": "0.2",
+            "designation": ""
         },
         {
-            "sku": "item0008",
-            "name": "Livre 8",
-            "prix": 9.99
+            "id": "8",
+            "ref": "item0008",
+            "categorie": "Livres",
+            "nom": "Livre 8",
+            "prixHT": 9.99,
+            "prixTTC": 9.99, 
+            "tva": "0.2",
+            "designation": ""
         },
         {
-            "sku": "item0009",
-            "name": "Livre 9",
-            "prix": 9.99
+            "id": "9",
+            "ref": "item0009",
+            "categorie": "Livres",
+            "nom": "Livre 9",
+            "prixHT": 9.99,
+            "prixTTC": 9.99,
+            "tva": "0.2",
+            "designation": ""
         },
         {
-            "sku": "item0010",
-            "name": "Livre 10",
-            "prix": 9.99
+            "id": "10",
+            "ref": "item0010",
+            "categorie": "Livres",
+            "nom": "Livre 10",
+            "prixHT": 9.99,
+            "prixTTC": 9.99, 
+            "tva": "0.2",
+            "designation": ""
         }
     ]
 }

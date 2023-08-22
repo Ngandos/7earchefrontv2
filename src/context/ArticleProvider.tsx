@@ -1,9 +1,14 @@
 import { ReactElement, createContext, useState, useEffect } from "react"
 
 export type ArticleType = {
+    id: number,
     ref: string,
-    name: string,
-    prix: number,
+    categorie: string,
+    nom: string,
+    prixHT: number,
+    prixTTC: number,
+    tva: number,
+    designation: string
 }
 
 const initState: ArticleType[] = []
@@ -21,7 +26,7 @@ export const ArticlesProvider = ({ children }: ChildrenType): ReactElement => {
 
     useEffect(() => {
         const fetchArticles = async (): Promise<ArticleType[]> => {
-            const data = await fetch('http://localhost:3500/articles')
+            const data = await fetch('http://localhost:8080/demo/articles')
             .then(res => {
                 return res.json()
             })

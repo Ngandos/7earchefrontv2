@@ -1,6 +1,9 @@
 import Nav from './Nav';
 import useCart from '../hooks/useCart';
-import './ComponentsStyles/Header.styled.css'
+import '../ComponentsStyles/Header.styled.css'
+import '../images/ID.Visuelle/CinemaBandeauCouleur.jpeg';
+import { Link } from 'react-router-dom';
+
 
 type PropsType = {
     viewCart: boolean,
@@ -14,7 +17,9 @@ const Header = ({viewCart, setViewCart}: PropsType) => {
     const content = (
         <header className="header">
             <div className="headerTitleBar">
-                <h1 className='headTitle'>Congo-B-Exchange</h1>
+                <Link to="/">
+                    <h1 className='headTitle'>7éArche</h1>
+                </Link>
             </div>
             <div className="headerPriceBox">
                 <p>Total Articles : { totalItems }</p>

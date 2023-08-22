@@ -1,5 +1,5 @@
 import { ReactElement, memo } from 'react';
-import { ArticleType } from '../context/ArticlesProvider';
+import { ArticleType } from '../context/ArticleProvider';
 import { ReducerActionType, ReducerAction } from '../context/CartProvider';
 import '../ComponentsStyles/ArticleStyled.css';
 import '../images/HuilesVegetales/huile_davocat.jpg'; 
@@ -13,26 +13,25 @@ type PropsType = {
 
 const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }: 
     PropsType): ReactElement => {
-
-        const huile_davocat = '/src/images/HuilesVegetales/huile_davocat.jpg';
     
-    const img: string = new URL(`${huile_davocat}`, import.meta.url).href
+        const img: string = new URL(`/src/images/ArticlesLivres/${article.designation}.jpg`, import.meta.url).href
 
-    console.log(img, huile_davocat)
 
-    const onAddToCart = () => dispatch({ type: REDUCER_ACTIONS.ADD, payload: { ...article, qty: 1 }})
+        const onAddToCart = () => dispatch({ type: REDUCER_ACTIONS.ADD, payload: { ...article, qty: 1 }})
 
         const itemInCart = inCart ? ' -> Ajouté au panier: ' : null
 
         const content = (
             <article className='article'>
-                <h3>{ article.name }</h3>
-                <img src= {img} alt={ article.name } className='articleImg'/>
-                <p>
-                    {new Intl.NumberFormat('fr-FR', 
-                    { style: 'currency', currency: 'EUR' })
-                    .format(article.prix)} { itemInCart }
-                </p>
+                <h5>{ article.designation }</h5>
+                <img src= {img} alt={ article.designation } className='articleImg'/>
+                <strong>
+                    <p>
+                        {new Intl.NumberFormat('fr-FR', 
+                        { style: 'currency', currency: 'EUR' })
+                        .format(article.prixTTC)} { itemInCart }
+                    </p>
+                </strong>
                 <button className='CartImpl' onClick = {onAddToCart}> 
                     <p>Ajouter au Panier</p>
                 </button>
@@ -48,7 +47,8 @@ function areArticlesEqual({ article: prevArticle, inCart: prevInCart }: PropsTyp
                 return (
                     prevArticle[key as keyof ArticleType] === 
                     nextArticle[key as keyof ArticleType]
-            )}) && prevInCart === nextInCart
+                )
+            }) && prevInCart === nextInCart
         )
     }
 
