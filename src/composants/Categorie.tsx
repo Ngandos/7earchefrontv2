@@ -1,42 +1,40 @@
-import { ReactElement } from "react";
-import CategorieCard from "../ComponentsStyles/Categorie.styled";
-import { CategorieType } from "../context/CategoriesProvider";
+import { ReactElement } from 'react';
+import { CategorieType } from '../context/CategorieProvider';
+import '../ComponentsStyles/Categorie.styled.css';
 
 type PropsType = {
-    categorie: CategorieType;
-    id: number;
-    nom: string;
-    description: string;
-}
+  categorie: CategorieType;
+  nom: string;
+  description: string;
+};
 
-const Categorie = ({ categorie }: PropsType):ReactElement => {
-
-    const content = (
-        <CategorieCard>
-            <div className="wrapper">
-                <h1>{categorie.nom}</h1>
-                <div className="cols">
-                    <div className="col">
-                        <div className="container">
-                            <div className="front">
-                                <div className="inner">
-                                    <p>{categorie.id}</p>
-                                    <h4>{categorie.nom}</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="back">
-                            <div className="inner">
-                                <p>{categorie.description}</p>
-                            </div>
-                        </div> 
-                    </div>
-                </div>
+const Categorie = ({ categorie }: PropsType): ReactElement => {
+  const content = (
+    <div className='wrapper'>
+      <h1>{categorie.nom}</h1>
+      <div className='cols'>
+        <div className='col'>
+          <div className='container'>
+            <div className='front'>
+              <div className='inner'>
+                <p>{categorie.id}</p>
+                <span className='catName'>
+                  <p>{categorie.nom}</p>
+                </span>
+              </div>
             </div>
-        </CategorieCard>
-    )
-        return content
-}
-    
+            <div className='back'>
+              <div className='inner'>
+                <p>{categorie.description}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+  return content;
+};
 
 export default Categorie;
+

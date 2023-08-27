@@ -1,5 +1,5 @@
 import { ReactElement, memo } from 'react';
-import { ArticleType } from '../context/ArticlesProvider';
+import { ArticleType } from '../context/ArticleProvider';
 import { ReducerActionType, ReducerAction } from '../context/CartProvider';
 import '../ComponentsStyles/ArticleStyled.css';
 
@@ -22,7 +22,7 @@ const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }:
 
         const content = (
             <article className='article'>
-                <h3>{ article.designation }</h3>
+                <h5>{ article.designation }</h5>
                 <img src= {img} alt={ article.designation } className='articleImg'/>
                 <strong>
                     <p>

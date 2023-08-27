@@ -40,7 +40,7 @@ const Cart = () => {
                         <button className ="cartSubmit" disabled = {!totalItems} 
                             onClick = {onSubmitOrder}
                         >
-                            Valider la commande
+                            <p>Valider la commande</p>
                         </button>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import CategoriesContext from "../context/CategoriesProvider";
-import { UseCategoriesContextType } from "../context/CategoriesProvider";
+import CategoriesContext from "../context/CategorieProvider";
+import { UseCategoriesContextType } from "../context/CategorieProvider";
 
 const useCategories = (): UseCategoriesContextType => {
     return useContext(CategoriesContext)

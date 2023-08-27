@@ -1,6 +1,6 @@
 import Articlepage from "./ArticlePage.syled";
 import { ReactElement } from 'react';
-import { ArticleType } from '../../../context/ArticlesProvider';
+import { ArticleType } from '../../../context/ArticleProvider';
 import { ReducerActionType, ReducerAction } from '../../../context/CartProvider';
 import '../../../ComponentsStyles/ArticleStyled.css';
 import '../../../images/HuilesVegetales/huile_davocat.jpg'; 
@@ -29,7 +29,7 @@ const ArticlePage = ({ article, dispatch, REDUCER_ACTIONS, inCart }:
     return (
         <Articlepage>
             <div className="Title">
-                <h2>Article : </h2>
+                <h2>{article.nom}</h2>
             </div>
             <aside>
                 <div className="pict">
