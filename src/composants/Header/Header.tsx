@@ -1,7 +1,7 @@
 import Nav from '../Nav/Nav';
 import useCart from '../../hooks/useCart';
-import '../ComponentsStyles/Header.styled.css';
-import '../images/ID.Visuelle/CinemaBandeauCouleur.jpeg';
+import './Header.styled.css';
+import '../../images/ID.Visuelle/CinemaBandeauCouleur.jpeg';
 import { Link } from 'react-router-dom';
 
 type PropsType = {
@@ -30,3 +30,4 @@ const Header = ({ viewCart, setViewCart }: PropsType) => {
 };
 
 export default Header;
+

@@ -1,5 +1,5 @@
 import useCart from '../../hooks/useCart';
-import '../ComponentsStyles/FooterStyled.css';
+import './FooterStyled.css';
 
 type PropsType = {
 	viewCart: boolean;
@@ -34,3 +34,4 @@ const Footer = ({ viewCart }: PropsType) => {
 };
 
 export default Footer;
+

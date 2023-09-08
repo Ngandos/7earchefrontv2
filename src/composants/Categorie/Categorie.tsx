@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { CategorieType } from '../../context/CategorieProvider';
-import '../ComponentsStyles/Categorie.styled.css';
+import './Categorie.styled.css';
 
 type PropsType = {
 	categorie: CategorieType;

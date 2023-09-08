@@ -1,8 +1,8 @@
 import { ReactElement, memo } from 'react';
 import { ArticleType } from '../../context/ArticleProvider';
 import { ReducerActionType, ReducerAction } from '../../context/CartProvider';
-import '../ComponentsStyles/ArticleStyled.css';
-import '../images/HuilesVegetales/huile_davocat.jpg';
+import './ArticleStyled.css';
+import '../../images/HuilesVegetales/huile_davocat.jpg';
 
 type PropsType = {
 	article: ArticleType;
@@ -65,3 +65,4 @@ function areArticlesEqual(
 const MemorizedArticle = memo<typeof Article>(Article, areArticlesEqual);
 
 export default MemorizedArticle;
+

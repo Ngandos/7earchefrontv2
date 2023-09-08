@@ -2,7 +2,7 @@ import useCart from '../../hooks/useCart';
 import useArticles from '../../hooks/useArticle';
 import { ReactElement } from 'react';
 import Article from '../Article/Article';
-import '../ComponentsStyles/ArticleList.css';
+import './ArticleList.css';
 
 const ArticleList = () => {
 	const { dispatch, REDUCER_ACTIONS, cart } = useCart();
