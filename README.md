@@ -23,6 +23,10 @@ Application 7eArche Projet Soutenance CQP DNT OCTO/DEMOS
 
       ->   `nvm use`
 
+## Installation de Vite Serveur de developpement JS
+
+      $ yarn create vite
+
 ## Prérequis pour la récupération des sources
 
 Ouvrir un terminal puis créer un repertoire
