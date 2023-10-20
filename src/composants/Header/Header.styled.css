@@ -1,0 +1,39 @@
+.header {
+	width: 100%;
+	height: 7%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-image: url(../../images/ID.Visuelle/CinemaBandeauCouleur.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-bottom: black solid 2px;
+	box-shadow: 2px 2px 6px;
+}
+
+.headerTitleBar {
+	width: 50%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.headTitle {
+	justify-self: flex-start;
+}
+
+.headerPriceBox {
+	width: 50%;
+	margin-bottom: 2%;
+	/* padding: 24px; */
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.headerTitleBar,
+.headerPriceBox {
+	margin: 0 10px 0 10px;
+	padding: 24px;
+}
+
