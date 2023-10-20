@@ -1,8 +1,7 @@
 import { ReactElement, memo } from 'react';
-import { ArticleType } from '../context/ArticleProvider';
-import { ReducerActionType, ReducerAction } from '../context/CartProvider';
-import '../ComponentsStyles/ArticleStyled.css';
-import '../images/HuilesVegetales/huile_davocat.jpg'; 
+import { ArticleType } from '../../context/ArticleProvider';
+import { ReducerActionType, ReducerAction } from '../../context/CartProvider';
+import '../Article/ArticleStyled.css';
 
 type PropsType = {
     article: ArticleType,

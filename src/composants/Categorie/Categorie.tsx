@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
-import { CategorieType } from '../context/CategorieProvider';
-import '../ComponentsStyles/Categorie.styled.css';
+import { CategorieType } from '../../context/CategorieProvider';
+import '../Categorie/Categorie.styled.css';
+import '../Categorie/Categorie.styled';
 
 type PropsType = {
   categorie: CategorieType;
@@ -9,6 +10,7 @@ type PropsType = {
 };
 
 const Categorie = ({ categorie }: PropsType): ReactElement => {
+
   const content = (
     <div className='wrapper'>
       <h1>{categorie.nom}</h1>

@@ -1,7 +1,6 @@
 import { ChangeEvent, ReactElement, memo } from "react";
-import "../ComponentsStyles/CartLineItem.css";
-import '../images/HuilesVegetales/huile_davocat.jpg';
-import { CartItemType, ReducerAction, ReducerActionType } from "../context/CartProvider";
+import "../CartLineItem/CartLineItem.css";
+import { CartItemType, ReducerAction, ReducerActionType } from "../../context/CartProvider";
 
 type PropsType = {
     item: CartItemType,

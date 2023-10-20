@@ -1,5 +1,5 @@
-import useCart from "../hooks/useCart";
-import '../ComponentsStyles/FooterStyled.css';
+import useCart from "../../hooks/useCart";
+import '../Footer/FooterStyled.css';
 
 type PropsType = {
     viewCart: boolean,

@@ -1,4 +1,4 @@
-import Searchbar from "../ComponentsStyles/SearchBar.styled";
+import Searchbar from "./SearchBar.styled";
 
 const placeholderStatus = "Rechercher par Categorie, Articles, Livres, Auteurs, Editeurs...";
 

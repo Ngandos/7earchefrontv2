@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import Cart from './composants/Cart';
-import Header from './composants/Header';
-import Footer from './composants/Footer';
-import SearchBar from './composants/SearchBar';
+import Cart from './composants/Cart/Cart';
+import Header from './composants/Header/Header';
+import Footer from './composants/Footer/Footer';
+import SearchBar from './composants/Searchar/SearchBar';
 import './App.css';
 import MenuNav from './composants/MenuNav/MenuNav';
-import CategorieList from './composants/CategorieList';
+import CategorieList from './composants/CategorieList/CategorieList';
 import { Routes, Route } from 'react-router-dom';
-import ArticleList from './composants/ArticleList';
+import ArticleList from './composants/ArticlesList/ArticleList';
 import Connexion from './composants/LogIn/Connexion';
 import Subscription from './composants/Subscription/Subscription';
 import UserProfil from './composants/UserProfil/UserProfil';
+import ClientList from './composants/ClientList/ClientList';
 
 function App() {
   const [viewCart, setViewCart] = useState(false);
@@ -31,6 +32,7 @@ function App() {
         <Route path='/CréerUnCompte' element={<Subscription />} />
         <Route path='/connexion' element={<Connexion />} />
         <Route path='/monCompte' element={<UserProfil />} />
+        <Route path='/Client' element= {<ClientList/>}/>
       </Routes>
       {pageContent}
       <Footer viewCart={false} />

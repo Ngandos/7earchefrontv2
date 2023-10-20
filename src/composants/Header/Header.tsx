@@ -1,7 +1,7 @@
-import Nav from './Nav';
-import useCart from '../hooks/useCart';
-import '../ComponentsStyles/Header.styled.css'
-import '../images/ID.Visuelle/CinemaBandeauCouleur.jpeg';
+import Nav from '../Nav/Nav';
+import useCart from '../../hooks/useCart';
+import '../Header/Header.styled.css';
+import '../../images/ID.Visuelle/CinemaBandeauCouleur.jpeg';
 import { Link } from 'react-router-dom';
 
 
