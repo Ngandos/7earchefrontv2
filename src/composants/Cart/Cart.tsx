@@ -22,7 +22,7 @@ const Cart = () => {
 
         const commande = {
             numComm: generateUniqueCode(),
-            dateComm: new Date(),
+            dateCommande: new Date(),
             lignesCommande: cart.map(item => ({
               quantite: item.qty,
               article: item
