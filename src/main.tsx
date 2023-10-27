@@ -7,6 +7,7 @@ import { CartProvider } from './context/CartProvider.tsx'
 import { CategoriesProvider } from './context/CategorieProvider.tsx';
 import { ClientProvider } from './context/ClientProvider.tsx';
 import { BrowserRouter } from 'react-router-dom'
+import { CommandeProvider } from './context/CommandeProvider.tsx'
 
 
 
@@ -17,9 +18,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <CartProvider>
         <CategoriesProvider>
           <ClientProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
+            <CommandeProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </CommandeProvider>
           </ClientProvider>
         </CategoriesProvider>
       </CartProvider>

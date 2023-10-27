@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Cart from './composants/Cart/Cart';
 import Header from './composants/Header/Header';
 import Footer from './composants/Footer/Footer';
-import SearchBar from './composants/Searchar/SearchBar';
 import './App.css';
 import MenuNav from './composants/MenuNav/MenuNav';
 import CategorieList from './composants/CategorieList/CategorieList';
@@ -10,10 +9,12 @@ import { Routes, Route } from 'react-router-dom';
 import ArticleList from './composants/ArticlesList/ArticleList';
 import Connexion from './composants/LogIn/Connexion';
 import Subscription from './composants/Subscription/Subscription';
-import UserProfil from './composants/UserProfil/UserProfil';
 import ClientList from './composants/ClientList/ClientList';
+import CommandeList from './composants/CommandeList/CommandeList';
+import SearchBar from './composants/Searchar/SearchBar'
 
 function App() {
+
   const [viewCart, setViewCart] = useState(false);
 
   const pageContent = <Routes />;
@@ -26,13 +27,13 @@ function App() {
         <SearchBar />
       </div>
       <Routes>
-        <Route path='/' element={<ArticleList />} />
-        <Route path='/categorie' element={<CategorieList />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/CréerUnCompte' element={<Subscription />} />
-        <Route path='/connexion' element={<Connexion />} />
-        <Route path='/monCompte' element={<UserProfil />} />
-        <Route path='/Client' element= {<ClientList/>}/>
+        <Route path = '/' element = {<ArticleList />} />
+        <Route path = '/categorie' element = {<CategorieList />} />
+        <Route path = '/cart' element = {<Cart />} />
+        <Route path = '/CréerUnCompte' element = {<Subscription />} />
+        <Route path = '/connexion' element = {<Connexion />} />
+        <Route path = '/Client' element = {<ClientList/>}/>
+        <Route path = '/Commande' element = {<CommandeList/>}/>
       </Routes>
       {pageContent}
       <Footer viewCart={false} />

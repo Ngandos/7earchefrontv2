@@ -1,28 +1,29 @@
 import { ReactElement } from 'react';
 import { ClientType } from '../../context/ClientProvider';
 import '../Client/Client.styled.css'
-import '../Client/Client.styled';
+
 
 type PropsType = {
   client: ClientType;
   id:number;
+  adresses: string;
   nom: string;
   prenom: string;
   numCompte: string;
-  nbCommandes: number;
-};
+  commandes: [];
+}
 
 const Client = ({ client }: PropsType): ReactElement => {
 
+
   const content = (
     <div className='wrapper'>
-      <h1>{client.nom}</h1>
       <div className='cols'>
         <div className='col'>
           <div className='container'>
             <div className='front'>
               <div className='inner'>
-                <p>{client.id}</p>
+                <p>{client.nom}</p>
                 <span className='cliName'>
                   <p>{client.prenom}</p>
                 </span>
@@ -30,7 +31,7 @@ const Client = ({ client }: PropsType): ReactElement => {
             </div>
             <div className='back'>
               <div className='inner'>
-                <p>{}</p>
+                <p>{client.commandes}</p>
               </div>
             </div>
           </div>

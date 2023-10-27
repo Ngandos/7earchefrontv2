@@ -9,6 +9,7 @@ input {
   background-color: white;
   border-radius: 0.5rem;
   padding: 5px;
+  color: black;
 }
 
 button {

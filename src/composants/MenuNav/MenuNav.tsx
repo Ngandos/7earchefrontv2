@@ -3,6 +3,7 @@ import './MenuNav.styled';
 import NavPages from './MenuNav.styled';
 
 const MenuNav = () => {
+  
   return (
     <NavPages>
       <div className='navlist'>

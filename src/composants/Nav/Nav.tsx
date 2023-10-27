@@ -4,9 +4,12 @@ type PropsType = {
 };
 
 const Nav = ({ viewCart, setViewCart }: PropsType) => {
+
   const button = viewCart ? (
+
     <button onClick={() => setViewCart(false)}> View Articles </button>
   ) : (
+    
     <button onClick={() => setViewCart(true)}> View Cart </button>
   );
 

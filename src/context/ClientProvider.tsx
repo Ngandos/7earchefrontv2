@@ -2,25 +2,32 @@ import { ReactElement, createContext, useState, useEffect } from "react"
 
 export type ClientType = {
     id: number,
-    adresse: string,
+    adresses: {
+        id: number,
+        numRue: number,
+        rue: string,
+        ville: string,
+        codePostal: number,
+        pays: string
+    },
+    commandes: [],
     nom: string,
     prenom: string,
     numCompte: string,
-    nbCommandes: number
 }
 
 const initState: ClientType[] = []
 
-export type UseClientContextType = { Client: ClientType[] }
+export type UseClientContextType = { client: ClientType[] }
 
-const initContextState: UseClientContextType = { Client: [] }
+const initContextState: UseClientContextType = { client: [] }
 
 const ClientContext = createContext <UseClientContextType>(initContextState)
 
 type ChildrenType = { children?: ReactElement | ReactElement[]}
 
 export const ClientProvider = ({ children }: ChildrenType): ReactElement => {
-    const [Client, setClient] = useState<ClientType[]>(initState)
+    const [client, setClient] = useState<ClientType[]>(initState)
 
     useEffect(() => {
         const fetchClient = async (): Promise<ClientType[]> => {
@@ -38,7 +45,7 @@ export const ClientProvider = ({ children }: ChildrenType): ReactElement => {
     }, [])
 
     return (
-        <ClientContext.Provider value= {{ Client }}>
+        <ClientContext.Provider value= {{ client }}>
             {children}
         </ClientContext.Provider>
     )

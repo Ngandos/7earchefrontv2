@@ -6,10 +6,10 @@ const SearchBar = () => {
 
     return (
         <Searchbar>
-            <label className="searchLab">
+            <label className="searchLab" htmlFor="search">
                 <p className="seaLabText">Effectuer une recherche sur 7éArche :</p>
             </label>
-            <input type="search" className="search" placeholder={placeholderStatus} />
+            <input type="search" className="search" placeholder={placeholderStatus} id="search"/>
         </Searchbar>
     )
 }

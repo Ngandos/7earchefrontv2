@@ -24,16 +24,19 @@ const Cart = () => {
             numComm: generateUniqueCode(),
             dateComm: new Date(),
             lignesCommande: cart.map(item => ({
-              quantite: item.qty,
-              article: item
-               //article: { id: item.id }
+                article: item,
+                id: item.id,
+                nom: item.nom,
+                categorie: item.categorie,
+                quantite: item.qty,
+                prixTTC: item.prixTTC,
             }))
         };
 
         console.log("Commande ", commande);
 
         axios.defaults.headers.post['Content-Type'] ,'application/json';
-        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = 'http://localhost:5173';
         axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
         axios.defaults.headers.post['Access-Control-Allow-Headers'] = '*';
           
@@ -47,7 +50,7 @@ const Cart = () => {
              // toast.error('Erreur lors de la création de la commande');
         });
 
-    return content; 
+    return commande; 
 
     }
 
@@ -56,10 +59,11 @@ const Cart = () => {
     const pageContent = confirm ? (
 
         //Renvoyer contenu commande ici :
-
+        
         <>
             <h2>Thanks for your order.</h2>
             <br/>
+            {cart}
         </>
         ) : (
                 <div className="CartContent">

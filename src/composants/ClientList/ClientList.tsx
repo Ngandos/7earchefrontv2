@@ -1,28 +1,31 @@
 import { ReactElement } from 'react';
-import useClient from '../../hooks/useClient';
 import '../ClientList/ClientList.styled.css';
 import '../../images/ID.Visuelle/CinemaBandeauCouleur.jpeg';
-
+import { ClientType } from '../../context/ClientProvider';
+import Client from '../Client/Client';
+import useClient from '../../hooks/useClient';
 
 const ClientList = () => {
 
-  const { Client } = useClient();
+  const {client} = useClient();
 
   let pageContent: ReactElement | ReactElement[] = <p>Loading...</p>;
 
-  if (Client?.length) {
-    pageContent = Client.map((client) => {
+  if (client?.length) {
+    pageContent = client.map((client: ClientType) => {
 
       return (
+
         <Client
-          key={client.id}
-          adresse={client.adresse}
+          id={client.id}
+          adresses={""}
           client={client}
           nom={client.nom}
-          description={client.prenom}
+          prenom={client.prenom}
           numCompte={client.numCompte}
-          nbCommandes={client.nbCommandes}
+          commandes={[]}
         />
+
       );
     });
   }

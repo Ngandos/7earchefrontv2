@@ -78,12 +78,13 @@ h1 {
 }
   
 .wrapper {
-    width: 90%;
+    width: 50%;
     margin: 0 auto;
     max-width: 80rem;
   }
   
 .cols {
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -168,7 +169,7 @@ h1 {
     width: 100%;
   }
   
-.inner{
+.inner {
     -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
     transform: translateY(-50%) translateZ(60px) scale(0.94);
     top: 50%;
@@ -191,14 +192,14 @@ h1 {
     transform-style: preserve-3d;
 }
   
-.container .front{
+.container .front {
     -webkit-transform: rotateY(0deg);
     transform: rotateY(0deg);
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
   }
   
-.container:hover .back{
+.container:hover .back {
     -webkit-transform: rotateY(0deg);
     transform: rotateY(0deg);
     -webkit-transform-style: preserve-3d;
