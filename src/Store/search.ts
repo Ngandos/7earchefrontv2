@@ -1,6 +1,6 @@
 import { SetStateAction } from "react";
-import { ArticleType } from "../context/ArticlesProvider";
-import { CategorieType } from "../context/CategoriesProvider";
+import { ArticleType } from "../context/ArticleProvider";
+import { CategorieType } from "../context/CategorieProvider";
 import { InputArticleData, InputAuteurData, InputCategorieData, InputEditeurData } from "../types";
 import { AuteurType } from "../context/AuteursProvider";
 import { EditeurType } from "../context/EditeursProvider";

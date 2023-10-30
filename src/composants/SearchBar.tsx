@@ -37,6 +37,7 @@ import {
 
 // eslint-disable-next-line react-refresh/only-export-components
 function SearchBarInput() {
+  
   const data = useContext(DataContext);
 
   const {
@@ -263,6 +264,7 @@ function SearchBarInput() {
     setCurrentSearch,
     handleReset,
     shouldSetResults,
+    setShouldBeOpen,
   ]);
 
   return (
@@ -272,7 +274,7 @@ function SearchBarInput() {
       filteredAuteurs={hasResults}
       filteredCategories={hasResults}
       filteredEditeurs={hasResults}
-      setShouldBeOpen={shouldBeOpen}>
+      shouldBeOpen={shouldBeOpen}>
       <div className='input-wrapper'>
         <input
           className='searchbar-input'
@@ -418,6 +420,7 @@ function SearchBarInput() {
 
 // eslint-disable-next-line react-refresh/only-export-components
 const SearchBar = () => {
+
   return (
     <Searchbar>
       <SearchbarLabel>Recherche : </SearchbarLabel>

@@ -5,6 +5,7 @@ import {
   IDataContextTypePayload,
   SearchResults,
 } from './DataContextType';
+
 export const SET_SEARCH = 'SET_SEARCH';
 export const SET_SEARCH_RESULTS = 'SET_SEARCH_RESULTS';
 const initialState = {
@@ -32,16 +33,19 @@ const searchReducer = (
       return state;
   }
 };
+
 const setCurrentSearch =
   (dispatch: React.Dispatch<IDataContextTypePayload>) =>
   (currentSearch: string) => {
     dispatch({ type: SET_SEARCH, payload: { currentSearch } });
   };
+
 const setSearchResults =
   (dispatch: React.Dispatch<IDataContextTypePayload>) =>
   (searchResults: SearchResults) => {
     dispatch({ type: SET_SEARCH_RESULTS, payload: { searchResults } });
   };
+
 export const { Context, Provider } = createDataContext(
   searchReducer,
   initialState,
