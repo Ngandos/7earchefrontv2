@@ -31,6 +31,7 @@ function App() {
         <Route path='/CréerUnCompte' element={<Subscription />} />
         <Route path='/connexion' element={<Connexion />} />
         <Route path='/monCompte' element={<UserProfil />} />
+        {/* <Route path='/Livres' element={<Livres/>} /> */}
       </Routes>
       {pageContent}
       <Footer viewCart={false} />

@@ -5,6 +5,8 @@ import './index.css'
 import { ArticlesProvider } from './context/ArticleProvider.tsx'
 import { CartProvider } from './context/CartProvider.tsx'
 import { CategoriesProvider } from './context/CategorieProvider.tsx';
+import { LivreProvider } from './context/LivreProvider.tsx';
+
 import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -13,9 +15,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <ArticlesProvider>
       <CartProvider>
         <CategoriesProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <LivreProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </LivreProvider>
         </CategoriesProvider>
       </CartProvider>
     </ArticlesProvider>

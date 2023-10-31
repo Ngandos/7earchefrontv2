@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Searchbar, SearchbarContainerInput } from "./SearchBar.styled";
 import useArticles from "../../hooks/useArticle";
 import useCategories from "../../hooks/useCategorie";
+import useAuteur from "../../hooks/useAuteur";
+import useEditeur from "../../hooks/useEditeur";
 
 
 
@@ -25,11 +27,15 @@ export default SearchBar;
 
 const SearchBarInput = () => {
 
-  const searchbarSelect = 'searchBarSelect'
+  const searchbarSelect = 'searchbarSelect'
 
   const { articles } = useArticles();
 
   const { Categories } = useCategories();
+
+  const { auteurs } = useAuteur();
+
+  const { editeurs } = useEditeur();
 
   const [searchbarPlaceholder, setSearchbarPlaceHolder] = useState(placeholderStatus);
 
@@ -70,19 +76,25 @@ const SearchBarInput = () => {
         placeholder={searchbarPlaceholder}
         role={"SearchBarInput"} />
 
-    {isSearchbarInputHasValue
-        ? <img src={searchDelete} onClick={handleOnClickDeleteSearchQuery} alt='Icon search' />
-        : <img src={searchIcon} alt='Icon search' />
-    }
+      {isSearchbarInputHasValue ? 
+        <img src={searchDelete} onClick={handleOnClickDeleteSearchQuery} alt='Icon search' />
+          : <img src={searchIcon} alt='Icon search' />
+      }
 
-    <datalist id={searchbarSelect}>
-        {articles.map(( article ) =>
-            <option key={article.id} value={article.nom} tabIndex={0} />
-        )}
-        {Categories.map(( categorie ) =>
-            <option key={categorie.id} value={categorie.nom} />
-        )}
-    </datalist>
+      <datalist id={searchbarSelect}>
+          {articles.map(( article ) =>
+              <option key={article.id} value={article.nom} tabIndex={0} />
+          )}
+          {Categories.map(( categorie ) =>
+              <option key={categorie.id} value={categorie.nom} />
+          )}
+          {auteurs.map(( auteur ) =>
+              <option key={auteur.id} value={auteur.nom} />
+          )}
+          {editeurs.map(( editeur ) =>
+              <option key={editeur.id} value={editeur.enseigne} />
+          )}
+      </datalist>
     </SearchbarContainerInput>
   )
 }

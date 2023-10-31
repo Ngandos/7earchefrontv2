@@ -1,34 +1,34 @@
 import { ReactElement, memo } from 'react';
-import { ArticleType } from '../../context/ArticleProvider';
+import { LivreType } from '../../context/LivreProvider';
 import { ReducerActionType, ReducerAction } from '../../context/CartProvider';
 import './ArticleStyled.css';
 
 type PropsType = {
-    article: ArticleType,
+    livre: LivreType,
     dispatch: React.Dispatch<ReducerAction>,
     REDUCER_ACTIONS: ReducerActionType,
     inCart: boolean,
 }
 
-const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }: 
+const Livre = ({ livre, dispatch, REDUCER_ACTIONS, inCart }: 
     PropsType): ReactElement => {
     
-        const img: string = new URL(`/src/images/ArticlesLivres/${article.designation}.jpg`, import.meta.url).href
+        const img: string = new URL(`/src/images/ArticlesLivres/${livre.titre}.jpg`, import.meta.url).href
 
 
-        const onAddToCart = () => dispatch({ type: REDUCER_ACTIONS.ADD, payload: { ...article, qty: 1 }})
+        const onAddToCart = () => dispatch({ type: REDUCER_ACTIONS.ADD, payload: { ...livre, qty: 1 }})
 
         const itemInCart = inCart ? ' -> Ajouté au panier: ' : null
 
         const content = (
             <article className='article'>
-                <h5>{ article.designation }</h5>
-                <img src= {img} alt={ article.designation } className='articleImg'/>
+                <h5>{ livre.titre }</h5>
+                <img src= {img} alt={ livre.titre } className='articleImg'/>
                 <strong>
                     <p>
                         {new Intl.NumberFormat('fr-FR', 
                         { style: 'currency', currency: 'EUR' })
-                        .format(article.prixTTC)} { itemInCart }
+                        .format(livre.prixTTC)} { itemInCart }
                     </p>
                 </strong>
                 <button className='CartImpl' onClick = {onAddToCart}> 
@@ -39,18 +39,18 @@ const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }:
     return content
 }
 
-function areArticlesEqual({ article: prevArticle, inCart: prevInCart }: PropsType, 
-    { article: nextArticle, inCart: nextInCart }: PropsType) {
+function areLivresEqual({ livre: prevlivre, inCart: prevInCart }: PropsType, 
+    { livre: nextlivre, inCart: nextInCart }: PropsType) {
         return (
-            Object.keys(prevArticle).every(key => {
+            Object.keys(prevlivre).every(key => {
                 return (
-                    prevArticle[key as keyof ArticleType] === 
-                    nextArticle[key as keyof ArticleType]
+                    prevlivre[key as keyof LivreType] === 
+                    nextlivre[key as keyof LivreType]
                 )
             }) && prevInCart === nextInCart
         )
     }
 
-const MemorizedArticle = memo<typeof Article>(Article, areArticlesEqual)
+const MemorizedLivre = memo<typeof Livre>(Livre, areLivresEqual)
 
-export default MemorizedArticle;
+export default MemorizedLivre;
