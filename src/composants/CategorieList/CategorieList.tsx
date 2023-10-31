@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
-import useCategories from '../hooks/useCategorie';
-import Categorie from './Categorie';
-import '../ComponentsStyles/CategorieList.styled.css';
-import '../images/ID.Visuelle/CinemaBandeauCouleur.jpeg';
+import useCategories from '../../hooks/useCategorie';
+import Categorie from '../Categorie/Categorie';
+import './CategorieList.styled.css';
+import '../../images/ID.Visuelle/CinemaBandeauCouleur.jpeg';
 
 const CategorieList = () => {
   const { Categories } = useCategories();
