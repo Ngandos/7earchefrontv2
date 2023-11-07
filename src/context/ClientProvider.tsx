@@ -2,18 +2,11 @@ import { ReactElement, createContext, useState, useEffect } from "react"
 
 export type ClientType = {
     id: number,
-    adresses: {
-        id: number,
-        numRue: number,
-        rue: string,
-        ville: string,
-        codePostal: number,
-        pays: string
-    },
-    commandes: [],
     nom: string,
     prenom: string,
     numCompte: string,
+    commandes: [],
+    adresses: [],
 }
 
 const initState: ClientType[] = []

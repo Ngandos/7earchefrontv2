@@ -10,17 +10,16 @@ type PropsType = {
     inCart: boolean,
 }
 
-const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }: 
-    PropsType): ReactElement => {
+const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }: PropsType): ReactElement => {
     
         const img: string = new URL(`/src/images/ArticlesLivres/${article.designation}.jpg`, import.meta.url).href
-
 
         const onAddToCart = () => dispatch({ type: REDUCER_ACTIONS.ADD, payload: { ...article, qty: 1 }})
 
         const itemInCart = inCart ? ' -> Ajouté au panier: ' : null
 
         const content = (
+            
             <article className='article'>
                 <h5>{ article.designation }</h5>
                 <img src= {img} alt={ article.designation } className='articleImg'/>

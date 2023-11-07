@@ -1,8 +1,17 @@
 import styled from "styled-components";
 
 const Categorie = styled.section`
+
     display: flex;
     flex-direction: row;
+
+    .catName {
+        width: 100%;
+        color: white;
+        display: flex;
+        justify-content: center;
+        font-size: x-large;
+    }
 
     .rotation3d {
         width: 285px;

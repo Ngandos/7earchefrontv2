@@ -78,6 +78,7 @@ h1 {
   }
   
 .cols {
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -232,23 +233,18 @@ h1 {
     font-family: 'Montserrat';
     font-weight: 300;
 }
-
-.catName {
-    color: black;
-    font-size: x-large;
-}
   
 @media screen and (max-width: 64rem) {
     .col {
-      width: calc(33.333333% - 2rem);
+      width: calc(100% - 2rem);
     }
 }
   
-@media screen and (max-width: 48rem) {
+/* @media screen and (max-width: 48rem) {
     .col {
       width: calc(50% - 2rem);
     }
-}
+} */
   
 @media screen and (max-width: 32rem) {
     .col {

@@ -4,7 +4,6 @@ export type ArticleType = {
     id: number,
     ref: string,
     categorie: string,
-    nom: string,
     prixHT: number,
     prixTTC: number,
     tva: number,

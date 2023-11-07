@@ -9,30 +9,32 @@ const CommandeList = () => {
 
     const {commande} = useCommande();
 
-  let pageContent: ReactElement | ReactElement[] = <p>Loading...</p>;
+    let pageContent: ReactElement | ReactElement[] = <p>Loading...</p>;
 
-  if (commande?.length) {
-    pageContent = commande.map((commande: CommandeType) => {
+    if (commande?.length) {
 
-      return (
+        pageContent = commande.map((commande: CommandeType) => {
 
-        <Commande
-            commande={commande}
-            id={commande.id}
-            numComm=''
-            dateComm={commande.dateComm}
-            ligneCommande={[]}
-        />
+            return (
 
-      );
-    });
-  }
+                <Commande
+                    commande={commande}
+                    id={commande.id}
+                    contenu={[]}
+                    numComm={commande.numComm}
+                    dateComm={commande.dateComm}
+                    status={commande.status}
+                />
 
-  const content = 
-  
-    <main className='main main--commandeList'>
-      {pageContent}
-    </main>;
+            );
+        });
+    }
+
+    const content = 
+    
+        <main className='main main--commandeList'>
+            {pageContent}
+        </main>;
 
   return content;
  

@@ -4,7 +4,6 @@ export type CartItemType = {
   id: number;
   ref: string;
   categorie: string;
-  nom: string;
   prixHT: number;
   prixTTC: number;
   tva: number;
@@ -40,7 +39,7 @@ const reducer = (
         if (!action.payload) {
           throw new Error('action.payload missing in ADD action');
         }
-        const { id, ref, categorie, nom, prixHT, prixTTC, tva, designation } =
+        const { id, ref, categorie, prixHT, prixTTC, tva, designation } =
           action.payload;
 
         const filteredCart: CartItemType[] = state.cart.filter(
@@ -57,7 +56,7 @@ const reducer = (
           ...state,
           cart: [
             ...filteredCart,
-            { id, ref, categorie, nom, prixHT, prixTTC, tva, designation, qty },
+            { id, ref, categorie, prixHT, prixTTC, tva, designation, qty },
           ],
         };
       }

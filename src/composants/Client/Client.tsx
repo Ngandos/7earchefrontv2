@@ -4,12 +4,15 @@ import '../Client/Client.styled.css'
 
 
 type PropsType = {
-  client: ClientType;
-  id:number;
-  adresses: string;
-  nom: string;
-  prenom: string;
-  numCompte: string;
+  client: ClientType,
+  id: number,
+  userName: string,
+  nom: string,
+  prenom: string,
+  numCompte: string,
+  email: string,
+  password: string,
+  adresses: [];
   commandes: [];
 }
 

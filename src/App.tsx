@@ -12,35 +12,40 @@ import Subscription from './composants/Subscription/Subscription';
 import ClientList from './composants/ClientList/ClientList';
 import CommandeList from './composants/CommandeList/CommandeList';
 import SearchBar from './composants/Searchar/SearchBar'
+// import ArticlePage from './composants/Pages/ArticlePage/ArticlePage';
+
 
 function App() {
 
-  const [viewCart, setViewCart] = useState(false);
+    const [viewCart, setViewCart] = useState(false);
 
-  const pageContent = <Routes />;
+    const pageContent = <Routes />;
 
-  const content = (
-    <div className='MainArea'>
-      <Header viewCart={viewCart} setViewCart={setViewCart} />
-      <div className='middle'>
-        <MenuNav />
-        <SearchBar />
-      </div>
-      <Routes>
-        <Route path = '/' element = {<ArticleList />} />
-        <Route path = '/categorie' element = {<CategorieList />} />
-        <Route path = '/cart' element = {<Cart />} />
-        <Route path = '/CréerUnCompte' element = {<Subscription />} />
-        <Route path = '/connexion' element = {<Connexion />} />
-        <Route path = '/Client' element = {<ClientList/>}/>
-        <Route path = '/Commande' element = {<CommandeList/>}/>
-      </Routes>
-      {pageContent}
-      <Footer viewCart={false} />
-    </div>
-  );
+    const content = (
 
-  return content;
+        <div className='MainArea'>
+            <Header viewCart={viewCart} setViewCart={setViewCart} />
+            <div className='middle'>
+                <MenuNav />
+                <SearchBar />
+            </div>
+            <CategorieList/>
+            {pageContent}
+            <Routes>
+                <Route path = '/' element = {<ArticleList />} />
+                {/* <Route path= '/Article/:id' element={<ArticlePage />} /> */}
+                <Route path = '/categorie' element = {<CategorieList />} />
+                <Route path = '/cart' element = {<Cart />} />
+                <Route path = '/CréerUnCompte' element = {<Subscription />} />
+                <Route path = '/connexion' element = {<Connexion />} />
+                <Route path = '/Client' element = {<ClientList/>}/>
+                <Route path = '/Commande' element = {<CommandeList/>}/>
+            </Routes>
+            <Footer viewCart={false} />
+        </div>
+    );
+
+    return content;
 }
 
 export default App;

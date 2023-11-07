@@ -40,7 +40,7 @@ const CartLineItem = ( { item, dispatch, REDUCER_ACTIONS }: PropsType) => {
     const content = (
         <ul className="cartItemContainer">
             <li className = "cartItem">
-                <img src = {img} alt = {item.nom} className="cartImg"/>
+                <img src = {img} alt = {item.designation    } className="cartImg"/>
                 <div className="CartItemDatas">
                     <div aria-label = "item Name">
                         <h3>{ item.designation }</h3>

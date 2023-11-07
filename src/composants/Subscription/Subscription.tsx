@@ -1,62 +1,155 @@
 import axios from "axios";
 import './Subscription.css';
 import { SubscribForm, FormContainer } from "./Subscription.styled";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Subscription = () => {
-  
-  const onSubmit = async() => {
-  
-    const newUser = {
-      username: String,
-      email: String,
-      password: String,
-      enabled: Boolean,
+
+    const SuscribeFormData = {
+        adresses: [],
+        commandes: [],
+        username: "",
+        nom: "",
+        prenom: "",
+        email: "",
+        wordPass: "",
+        passwordConfirm: "",
     };
 
-    console.log("User ", newUser);
+    const [ formData, setFormData ] = useState(SuscribeFormData);
 
-    axios.defaults.headers.post['Content-Type'] ,'application/json';
-    axios.defaults.headers.post['Access-Control-Allow-Origin'] = 'http://localhost:5173';
-    axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
-    axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'http://localhost:5173';
-      
-    await axios.post('http://localhost:8080/demo/user', newUser)
-        .then((response) => {
-            console.log('Compte créé:', response.data, newUser);
-        //  toast.success('Commande passée avec succès');
-        })
-        .catch(error => {
-            console.error('Erreur lors de la création du compte:', error);
-         // toast.error('Erreur lors de la création de la commande');
-    });
+    const { username, nom, prenom, email, wordPass, passwordConfirm } = formData;
 
-  return newUser; 
-}
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData((prevState) => ({
+            ...prevState, [e.target.id]: e.target.value,
+        }));
+    };
 
-  return (
-    <SubscribForm>
-      <FormContainer>
-        <label className='SubLabel' htmlFor='username'>
-          <p>Pseudo :</p>
-        </label>
-        <input type='text' placeholder='username' id="username"/>
+    function generateUniqueCode() {
+        const randomNumComm = Math.floor(Math.random() * 10000000); 
+        return {randomNumComm};
+    }
+  
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(formData);
+        setFormData(SuscribeFormData);
+    }
 
-        <label className='SubLabel' htmlFor='Email'>
-          <p>Email :</p>
-        </label>
-        <input type='email' placeholder='Email' id="Email"/>
+    const handleSubscription = async() => {
+    
+        const client = {
+            adresses: [],
+            commandes: [],
+            username: username,
+            nom: nom,
+            prenom: prenom,
+            numCompte: generateUniqueCode(),
+            email: email,
+            wordPass: wordPass,
+        };
 
-        <label className='SubLabel' htmlFor='Password' >
-          <p>Password :</p>
-        </label>
-        <input type='text' placeholder='Password' id="Password"/>
+        console.log("Client ", client);
 
-        <button type='submit' value='Envoyer' onClick={onSubmit}>
-          Envoi
-        </button>
-      </FormContainer>
-    </SubscribForm>
-  );
+        axios.defaults.headers.post['Content-Type'] ,'application/json';
+        
+        await axios.post('http://localhost:8080/demo/client', client)
+            .then((response) => {
+                console.log('Compte créé:', response.data, client);
+            //  toast.success('Commande passée avec succès');
+            })
+            .catch(error => {
+                console.error('Erreur lors de la création du compte:', error);
+            // toast.error('Erreur lors de la création de la commande');
+        });
+
+        return client; 
+    }
+
+    return (
+        <SubscribForm>
+            <h1>S'inscrire</h1>
+            <FormContainer onSubmit={onSubmit}>
+                <label className='SubLabel' htmlFor='nom' >
+                    <p>Nom :</p>
+                </label>
+                <input className="accInput"
+                    type='text' 
+                    placeholder='Nom' 
+                    id="nom" 
+                    value={nom}
+                    onChange={onChange}
+                />
+                <label className='SubLabel' htmlFor='prenom' >
+                    <p>Prenom :</p>
+                </label>
+                <input className="accInput"
+                    type='text' 
+                    placeholder='Prenom' 
+                    id="prenom" 
+                    value={prenom}
+                    onChange={onChange}
+                />
+                <label className='SubLabel' htmlFor='username'>
+                    <p>Pseudo :</p>
+                </label>
+                <input className="accInput"
+                    type='text' 
+                    placeholder='Username' 
+                    id="username" 
+                    value={username}
+                    onChange={onChange}
+                />
+                <label className='SubLabel' htmlFor='email'>
+                    <p>Email :</p>
+                </label>
+                <input className="accInput"
+                    type='email' 
+                    placeholder='Email' 
+                    id="email" 
+                    value={email}
+                    onChange={onChange}
+                />
+                <label className='SubLabel' htmlFor='wordPass' >
+                    <p>Password :</p>
+                </label>
+                <input className="accInput"
+                    type='text' 
+                    placeholder='Password' 
+                    id="wordPass" 
+                    value={wordPass}
+                    onChange={onChange}
+                />
+                <label className='SubLabel' htmlFor='passwordConfirm' >
+                    <p>Password Confirm :</p>
+                </label>
+                <input className="accInput"
+                    type='text' 
+                    placeholder='Password Confirm' 
+                    id="passwordConfirm" 
+                    value={passwordConfirm}
+                    onChange={onChange}
+                />
+                <button 
+                    className="Subutton" 
+                    type='submit' 
+                    value='Envoyer' 
+                    onClick={handleSubscription}
+                >
+                    Envoi
+                </button>
+                <br/>
+                <p>
+                    Deja Inscrit ?<br/>
+                    <Link className='butt' to='/connexion'>
+                        Se connecter
+                    </Link> 
+                </p>
+            </FormContainer>
+        </SubscribForm>
+    );
 };
 
 export default Subscription;

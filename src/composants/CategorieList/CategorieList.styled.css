@@ -9,6 +9,7 @@ main {
     border: black solid 1px;
 }
 
+
 .rotation3d {
     width: 285px;
     background: #eaeaed;
@@ -81,7 +82,7 @@ h1 {
     width: 90%;
     margin: 0 auto;
     max-width: 80rem;
-  }
+}
   
 .cols {
     display: -webkit-box;
@@ -161,14 +162,14 @@ h1 {
     transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
   
-.back{
+.back{ 
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
   }
   
-.inner{
+.inner {
     -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
     transform: translateY(-50%) translateZ(60px) scale(0.94);
     top: 50%;
@@ -182,6 +183,10 @@ h1 {
     -webkit-perspective: inherit;
     perspective: inherit;
     z-index: 2;
+}
+
+.inner > p {
+    width: 100%;
 }
   
 .container .back {
@@ -239,13 +244,33 @@ h1 {
   
 @media screen and (max-width: 64rem) {
     .col {
-      width: calc(33.333333% - 2rem);
+      width: calc(100% - 2rem);
+    }
+    .wrapper {
+        width: 90%;
+        margin: 0 auto;
+        max-width: 80rem;
     }
 }
   
 @media screen and (max-width: 48rem) {
+    .cols {
+        width: calc(50% - 2rem);
+      }
+    
     .col {
       width: calc(50% - 2rem);
+    }
+
+    main {
+        width: 90%;
+        margin : 4% auto;
+        padding: 24px;
+        background-color: burlywood;
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 0.5rem;
+        border: black solid 1px;
     }
 }
   

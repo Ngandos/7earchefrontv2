@@ -16,45 +16,51 @@ const Cart = () => {
         return {randomNumComm}; 
     };
 
-    const onSubmitOrder = async() => {
-        dispatch({ type: REDUCER_ACTIONS.SUBMIT })
-        setConfirm(true)
+    const onSubmitOrder = async () => {
+        dispatch({ type: REDUCER_ACTIONS.SUBMIT });
+        setConfirm(true);
 
+        const commandeContent: { article: number; quantite: number }[] = [];
+
+        for (let i = 0; i < cart.length; i++) {
+            commandeContent.push({
+                article: cart[i].id,
+                quantite: cart[i].qty
+            })
+        }
+    
         const commande = {
-            numComm: generateUniqueCode(),
-            dateComm: new Date(),
-            lignesCommande: cart.map(item => ({
-                article: item,
-                id: item.id,
-                nom: item.nom,
-                categorie: item.categorie,
-                quantite: item.qty,
-                prixTTC: item.prixTTC,
-            }))
-        };
+            contenu: commandeContent,
+            numComm: generateUniqueCode().randomNumComm, // String
+            dateComm: new Date, // Date
+            status: "commande Envoyée" // String
+        }
+
+        console.log("Cart ", cart);
 
         console.log("Commande ", commande);
+        
+        try {
+            const response = await axios.post('http://localhost:8080/demo/commande', JSON.stringify(commande), {
 
-        axios.defaults.headers.post['Content-Type'] ,'application/json';
-        axios.defaults.headers.post['Access-Control-Allow-Origin'] = 'http://localhost:5173';
-        axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
-        axios.defaults.headers.post['Access-Control-Allow-Headers'] = '*';
-          
-        await axios.post('http://localhost:8080/demo/commande', commande)
-            .then((response) => {
-                console.log('Commande créée:', response.data, commande);
-            //  toast.success('Commande passée avec succès');
-            })
-            .catch(error => {
-                console.error('Erreur lors de la création de la commande:', error);
-             // toast.error('Erreur lors de la création de la commande');
-        });
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'http://localhost:5173',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': '*',
+                },
+            });
+            console.log('Commande créée:', response.data, commande);
+            // Successfully created the command
+            // Handle success or display a success message.
+        } catch (error) {
+            console.error('Erreur lors de la création de la commande:', error);
+            // Log the error details
+            // Handle the error, possibly display an error message.
+        }
 
-    return commande; 
-
-    }
-
-    console.log(Cart)
+        return commande; 
+    };
 
     const pageContent = confirm ? (
 
@@ -63,41 +69,40 @@ const Cart = () => {
         <>
             <h2>Thanks for your order.</h2>
             <br/>
-            {cart}
         </>
-        ) : (
-                <div className="CartContent">
-                    <h1 className="offScreen">Panier</h1>
-                    <br/>
-                    <ul className="cart">
-                        {cart.map(item => {
-                            return (
-                                <CartLineItem
-                                    key = {item.ref}
-                                    item = {item}
-                                    dispatch = {dispatch}
-                                    REDUCER_ACTIONS = {REDUCER_ACTIONS}
-                                />
-                            )
-                        })}
-                    </ul>
-                    <div className="cartTotals">
-                        <p>Total des Articles de la commande : {totalItems}</p>
-                        <p>Prix total de la commande : {totalPrice}</p>
-                        <button className ="cartSubmit" disabled = {!totalItems} 
-                            onClick = {onSubmitOrder} 
-                        >
-                            <p>Valider la commande</p>
-                        </button>
+            ) : (
+                    <div className="CartContent">
+                        <h1 className="offScreen">Panier</h1>
+                        <br/>
+                        <ul className="cart">
+                            {cart.map(item => {
+                                return (
+                                    <CartLineItem
+                                        key = {item.ref}
+                                        item = {item}
+                                        dispatch = {dispatch}
+                                        REDUCER_ACTIONS = {REDUCER_ACTIONS}
+                                    />
+                                )
+                            })}
+                        </ul>
+                        <div className="cartTotals">
+                            <p>Total des Articles de la commande : {totalItems}</p>
+                            <p>Prix total de la commande : {totalPrice}</p>
+                            <button className ="cartSubmit" disabled = {!totalItems} 
+                                onClick = {onSubmitOrder} 
+                            >
+                                <p>Valider la commande</p>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            )
+                )
 
-            const content = (
-                <main className="main main--cart">
-                    { pageContent }
-                </main>
-            )
+                const content = (
+                    <main className="main main--cart">
+                        { pageContent }
+                    </main>
+                )
 
     return content
 }

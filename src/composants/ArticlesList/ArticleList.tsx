@@ -13,7 +13,9 @@ const ArticleList = () => {
     let pageContent: ReactElement | ReactElement[] = <p>Loading...</p>
 
     if (articles?.length) {
+        
         pageContent = articles.map(article => {
+
             const inCart: boolean = cart.some(item => item.ref === article.ref)
 
             return (
