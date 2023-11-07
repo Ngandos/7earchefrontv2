@@ -50,13 +50,13 @@ const SearchbarContainerInput = styled.div<{
   }
 
   @media (min-width: ${(props) => props.theme.sizes.LAPTOP}px) {
-    border-top: 1px solid ${(props) => props.theme.colors.darkBlue};
-    border-left: 1px solid ${(props) => props.theme.colors.darkBlue};
-    border-right: 1px solid ${(props) => props.theme.colors.darkBlue};
+    border-top: 1px solid darck-blue;
+    border-left: 1px solid darck-blue;
+    border-right: 1px solid darck-blue;
     border-bottom: ${(props) =>
       props.shouldBeOpen && props.hasValidSearch && props.filteredArticles
         ? `none`
-        : `1px solid ${props.theme.colors.darkBlue}`};
+        : `1px solid darck-blue`};
     border-radius: ${(props) =>
       props.shouldBeOpen && props.hasValidSearch && props.filteredArticles
         ? `2.5rem 2.5rem 0 0`
@@ -90,13 +90,13 @@ const SearchbarContainerInput = styled.div<{
     font-weight: 400;
     line-height: 2rem;
     text-align: left;
-    color: ${(props) => props.theme.colors.darkBlue};
+    color: darck-blue;
     font-family: 'Outfit';
     font-style: normal;
     height: 4.75rem;
 
     &::placeholder {
-      color: ${(props) => props.theme.colors.blue_primary_base};
+      color: blue;
       opacity: 1;
       font-size: 12px;
       @media (min-width: ${(props) => props.theme.sizes.TABLET}px) {
@@ -104,10 +104,10 @@ const SearchbarContainerInput = styled.div<{
       }
     }
     &::-ms-input-placeholder {
-      color: ${(props) => props.theme.colors.blue_primary_base};
+      color: blue;
     }
     &::-ms-input-placeholder {
-      color: ${(props) => props.theme.colors.blue_primary_base};
+      color: blue;
     }
   }
 
@@ -145,7 +145,7 @@ const SearchbarContainerInput = styled.div<{
       .separator {
         display: block;
         height: 1px;
-        background-color: ${(props) => props.theme.colors.darkBlue};
+        background-color: darck-blue;
         width: inherit;
         margin-left: 2rem;
         margin-right: 2rem;
@@ -155,7 +155,7 @@ const SearchbarContainerInput = styled.div<{
 
   .options {
     position: relative;
-    border: 1px solid ${(props) => props.theme.colors.darkBlue};
+    border: 1px solid darck-blue;
     background: white;
     padding: 0 2rem 3.31rem 2rem;
     margin: 1.25rem -1px 6rem -1px;
@@ -164,11 +164,11 @@ const SearchbarContainerInput = styled.div<{
     overflow-y: scroll;
 
     @media (min-width: ${(props) => props.theme.sizes.LAPTOP}px) {
-      border: 1px solid ${(props) => props.theme.colors.darkBlue};
+      border: 1px solid darck-blue;
       border-top: none;
-      border-bottom: 1px solid ${(props) => props.theme.colors.darkBlue};
-      border-left: 1px solid ${(props) => props.theme.colors.darkBlue};
-      border-right: 1px solid ${(props) => props.theme.colors.darkBlue};
+      border-bottom: 1px solid darck-blue;
+      border-left: 1px solid darck-blue;
+      border-right: 1px solid darck-blue;
       border-radius: 0 0 2.5rem 2.5rem;
       margin: 0 -1px 6rem -1px;
     }
@@ -183,12 +183,12 @@ const SearchbarContainerInput = styled.div<{
     }
 
     .option {
-      color: ${(props) => props.theme.colors.darkBlue};
+      color: darck-blue;
       font-weight: 400;
       font-size: 1.75rem;
       line-height: 2.25rem;
       list-style-type: none;
-      border-bottom: solid 1px ${(props) => props.theme.colors.lightgrey};
+      border-bottom: solid 1px lightgrey;
       margin-top: 2.313rem;
       padding-bottom: 1.313rem;
 
@@ -212,7 +212,7 @@ const SearchbarContainerInput = styled.div<{
 
     .option a {
       text-decoration: none;
-      color: ${(props) => props.theme.colors.darkBlue};
+      color: darck-blue;
       &:hover {
         text-decoration: underline;
         font-weight: 600;

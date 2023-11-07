@@ -1,7 +1,7 @@
-import useCart from "../hooks/useCart";
+import useCart from "../../hooks/useCart";
 import { useState } from "react";
-import CartLineItem from "./CartLineItem";
-import '../ComponentsStyles/CartStyled.css';
+import CartLineItem from "../CartLineItem/CartLineItem";
+import './CartStyled.css';
 
 const Cart = () => {
 

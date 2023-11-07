@@ -1,39 +1,11 @@
-import {
-  Searchbar,
-  SearchbarContainerInput,
-  SearchbarLabel,
-} from '../ComponentsStyles/SearchBar.styled';
+import React, { useState, useContext, useEffect, useMemo, useCallback, memo } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import {
-  InputArticleData,
-  InputAuteurData,
-  InputCategorieData,
-  InputEditeurData,
-} from '../types';
-import { Context as SearchContext } from '../Store/SearchResults';
-import DataContext from '../Store/DataContext';
-import { ISearchContext } from '../Store/DataContextType';
-import {
-  memo,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
-
-import {
-  debounce,
-  formatArticlesDataForInput,
-  formatAuteursDataForInput,
-  formatCategoriesDataForInput,
-  formatEditeursDataForInput,
-  getItemSecondaryClass,
-  sortByRelevanceArt,
-  sortByRelevancesAut,
-  sortByRelevancesCat,
-  sortByRelevancesEdi,
-} from '../Store/search';
+import DataContext from '../../Store/DataContext';
+import { ISearchContext } from '../../Store/DataContextType';
+import { debounce, formatArticlesDataForInput, formatAuteursDataForInput, formatCategoriesDataForInput, formatEditeursDataForInput, getItemSecondaryClass, sortByRelevanceArt, sortByRelevancesAut, sortByRelevancesCat, sortByRelevancesEdi } from '../../Store/search';
+import { InputArticleData, InputAuteurData, InputCategorieData, InputEditeurData } from '../../types';
+import { Context as SearchContext } from '../../Store/SearchResults';
+import { SearchbarContainerInput, Searchbar, SearchbarLabel } from './SearchBar.styled';
 
 // eslint-disable-next-line react-refresh/only-export-components
 function SearchBarInput() {
