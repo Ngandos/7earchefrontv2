@@ -2,11 +2,10 @@ import { ReactElement, createContext, useState, useEffect } from "react"
 import { CartItemType } from "./CartProvider"
 
 export type CommandeType = {
+    commande: CommandeType,
     id: number,
-    numComm: number,
-    dateComm: Date,
     contenu: [
-        ligneCommande: {
+        ligne_commande: {
             item: CartItemType,
             id: number,
             category: string,
@@ -18,7 +17,12 @@ export type CommandeType = {
             ref: string,
         }
     ],
+    numComm: number,
+    dateComm: Date,
     status: string,
+    prixHT: number,
+    tva: number,
+    prixTTC: number,
 }
 
 const initState: CommandeType[] = []

@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Subscription = () => {
-
     const SuscribeFormData = {
         adresses: [],
         commandes: [],
@@ -13,25 +12,27 @@ const Subscription = () => {
         nom: "",
         prenom: "",
         email: "",
-        wordPass: "",
+        password: "",
         passwordConfirm: "",
     };
 
-    const [ formData, setFormData ] = useState(SuscribeFormData);
+    const [formData, setFormData] = useState(SuscribeFormData);
 
-    const { username, nom, prenom, email, wordPass, passwordConfirm } = formData;
+    const { username, nom, prenom, email, password, passwordConfirm } = formData;
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData((prevState) => ({
-            ...prevState, [e.target.id]: e.target.value,
+            ...prevState,
+            [e.target.id]: e.target.value,
         }));
     };
 
-    function generateUniqueCode() {
-        const randomNumComm = Math.floor(Math.random() * 10000000); 
-        return {randomNumComm};
+    function generateUniqueAccountNumber() {
+        const timestamp = Date.now();
+        const randomPart = Math.floor(Math.random() * 10000);
+        return `ACCU${timestamp}${randomPart}`;
     }
-  
+
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(formData);
@@ -39,33 +40,32 @@ const Subscription = () => {
     }
 
     const handleSubscription = async() => {
-    
+
         const client = {
+            id: null, // Generate a unique ID
             adresses: [],
             commandes: [],
             username: username,
             nom: nom,
             prenom: prenom,
-            numCompte: generateUniqueCode(),
+            numCompte: generateUniqueAccountNumber(),
             email: email,
-            wordPass: wordPass,
+            password: password,
         };
 
         console.log("Client ", client);
 
-        axios.defaults.headers.post['Content-Type'] ,'application/json';
-        
-        await axios.post('http://localhost:8080/demo/client', client)
-            .then((response) => {
-                console.log('Compte créé:', response.data, client);
-            //  toast.success('Commande passée avec succès');
-            })
-            .catch(error => {
-                console.error('Erreur lors de la création du compte:', error);
-            // toast.error('Erreur lors de la création de la commande');
-        });
+        // Configure Axios to send data as JSON
+        axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-        return client; 
+        try {
+            const response = await axios.post('http://localhost:8080/demo/client', client);
+            console.log('Compte créé:', response.data, client);
+            // toast.success('Compte créé avec succès');
+        } catch (error) {
+            console.error('Erreur lors de la création du compte:', error);
+            // toast.error('Erreur lors de la création du compte');
+        }
     }
 
     return (
@@ -98,7 +98,7 @@ const Subscription = () => {
                 <input className="accInput"
                     type='text' 
                     placeholder='Username' 
-                    id="username" 
+                    id="username"
                     value={username}
                     onChange={onChange}
                 />
@@ -108,18 +108,18 @@ const Subscription = () => {
                 <input className="accInput"
                     type='email' 
                     placeholder='Email' 
-                    id="email" 
+                    id='email' 
                     value={email}
                     onChange={onChange}
                 />
-                <label className='SubLabel' htmlFor='wordPass' >
+                <label className='SubLabel' htmlFor='password' >
                     <p>Password :</p>
                 </label>
                 <input className="accInput"
                     type='text' 
                     placeholder='Password' 
-                    id="wordPass" 
-                    value={wordPass}
+                    id="password" 
+                    value={password}
                     onChange={onChange}
                 />
                 <label className='SubLabel' htmlFor='passwordConfirm' >
@@ -142,7 +142,7 @@ const Subscription = () => {
                 </button>
                 <br/>
                 <p>
-                    Deja Inscrit ?<br/>
+                    Déjà Inscrit ?<br/>
                     <Link className='butt' to='/connexion'>
                         Se connecter
                     </Link> 
@@ -153,4 +153,3 @@ const Subscription = () => {
 };
 
 export default Subscription;
-

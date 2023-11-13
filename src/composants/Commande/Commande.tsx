@@ -6,10 +6,19 @@ import '../Categorie/Categorie.styled';
 type PropsType = {
     commande: CommandeType,
     id: number,
+    contenu: [
+        ligneCommande: {
+            id: number,
+            article: number,
+            quantite: number,
+        }
+    ],
     numComm: number,
     dateComm: Date,
-    contenu: [],
     status: string,
+    prixHT: number,
+    tva: number,
+    prixTTC: number,
   };
 
 const Commande = ({ commande }: PropsType): ReactElement => { 
@@ -32,6 +41,9 @@ const Commande = ({ commande }: PropsType): ReactElement => {
                         <div className='back'>
                             <div className='inner'>
                                 <p>{commande.status}</p>
+                                <>
+                                    {commande.contenu}
+                                </>
                             </div>
                         </div>
                     </div>

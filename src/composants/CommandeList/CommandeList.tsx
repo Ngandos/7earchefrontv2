@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
-import { CommandeType } from '../../context/CommandeProvider';
 import '../Categorie/Categorie.styled.css';
 import '../Categorie/Categorie.styled';
 import Commande from '../Commande/Commande';
 import useCommande from '../../hooks/useCommande';
+
 
 const CommandeList = () => {
 
@@ -13,7 +13,7 @@ const CommandeList = () => {
 
     if (commande?.length) {
 
-        pageContent = commande.map((commande: CommandeType) => {
+        pageContent = commande.map((commande) => {
 
             return (
 

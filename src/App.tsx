@@ -11,7 +11,7 @@ import Connexion from './composants/LogIn/Connexion';
 import Subscription from './composants/Subscription/Subscription';
 import ClientList from './composants/ClientList/ClientList';
 import CommandeList from './composants/CommandeList/CommandeList';
-import SearchBar from './composants/Searchar/SearchBar'
+import SearchBar from './composants/SearchBar/SearchBar'
 // import ArticlePage from './composants/Pages/ArticlePage/ArticlePage';
 
 

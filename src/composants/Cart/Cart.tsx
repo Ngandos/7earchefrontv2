@@ -5,6 +5,7 @@ import '../Cart/CartStyled.css';
 import axios from "axios";
 
 
+
 const Cart = () => {
 
     const [confirm, setConfirm] = useState<boolean>(false);
@@ -20,23 +21,33 @@ const Cart = () => {
         dispatch({ type: REDUCER_ACTIONS.SUBMIT });
         setConfirm(true);
 
-        const commandeContent: { article: number; quantite: number }[] = [];
+        const contenu: { 
+             id: number; article: number; quantite: number;
+        }[] = [];
 
         for (let i = 0; i < cart.length; i++) {
-            commandeContent.push({
-                article: cart[i].id,
-                quantite: cart[i].qty
-            })
-        }
-    
+            contenu.push({
+                
+                "id": i,
+                "article" : cart[i].id,
+                "quantite" : cart[i].qty, 
+                
+             })
+         } 
+
+        
+
         const commande = {
-            contenu: commandeContent,
+
+            contenu: contenu,
             numComm: generateUniqueCode().randomNumComm, // String
             dateComm: new Date, // Date
-            status: "commande Envoyée" // String
+            status: "commande Envoyée", // String
         }
 
         console.log("Cart ", cart);
+
+        // console.log("commandContent", commandeContent)
 
         console.log("Commande ", commande);
         
@@ -69,6 +80,7 @@ const Cart = () => {
         <>
             <h2>Thanks for your order.</h2>
             <br/>
+
         </>
             ) : (
                     <div className="CartContent">
