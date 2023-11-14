@@ -41,8 +41,8 @@ const Subscription = () => {
 
     const handleSubscription = async() => {
 
-        const client = {
-            id: null, // Generate a unique ID
+        const user = {
+            id: 0, // Generate a unique ID
             adresses: [],
             commandes: [],
             username: username,
@@ -51,16 +51,18 @@ const Subscription = () => {
             numCompte: generateUniqueAccountNumber(),
             email: email,
             password: password,
+            role: "USER",
+            enabled: false,
         };
 
-        console.log("Client ", client);
+        console.log("User ", user);
 
         // Configure Axios to send data as JSON
         axios.defaults.headers.post['Content-Type'] = 'application/json';
 
         try {
-            const response = await axios.post('http://localhost:8080/demo/client', client);
-            console.log('Compte créé:', response.data, client);
+            const response = await axios.post('http://localhost:8080/demo/users', user);
+            console.log('Compte créé:', response.data, user);
             // toast.success('Compte créé avec succès');
         } catch (error) {
             console.error('Erreur lors de la création du compte:', error);

@@ -5,7 +5,7 @@ export type CommandeType = {
     commande: CommandeType,
     id: number,
     contenu: [
-        ligne_commande: {
+        ligneCommande: {
             item: CartItemType,
             id: number,
             category: string,
