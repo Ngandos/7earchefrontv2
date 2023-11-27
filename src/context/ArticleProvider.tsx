@@ -7,7 +7,9 @@ export type ArticleType = {
     prixHT: number,
     prixTTC: number,
     tva: number,
-    designation: string
+    designation: string,
+    stock: number,
+    numerique: boolean,
 }
 
 const initState: ArticleType[] = []

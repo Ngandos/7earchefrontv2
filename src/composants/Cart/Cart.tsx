@@ -78,9 +78,9 @@ const Cart = () => {
         //Renvoyer contenu commande ici :
         
         <>
-            <h2>Thanks for your order.</h2>
+            <h2>Nous vous remercions pour vos achats !!!</h2>
             <br/>
-
+            {}
         </>
             ) : (
                     <div className="CartContent">

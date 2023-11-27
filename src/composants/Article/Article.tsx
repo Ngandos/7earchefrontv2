@@ -38,16 +38,23 @@ const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }: PropsType): Rea
     return content
 }
 
-function areArticlesEqual({ article: prevArticle, inCart: prevInCart }: PropsType, 
+function areArticlesEqual({ article: prevArticle, inCart: prevInCart }: PropsType,
+
     { article: nextArticle, inCart: nextInCart }: PropsType) {
+
         return (
+
             Object.keys(prevArticle).every(key => {
+
                 return (
                     prevArticle[key as keyof ArticleType] === 
                     nextArticle[key as keyof ArticleType]
                 )
+
             }) && prevInCart === nextInCart
+
         )
+        
     }
 
 const MemorizedArticle = memo<typeof Article>(Article, areArticlesEqual)
