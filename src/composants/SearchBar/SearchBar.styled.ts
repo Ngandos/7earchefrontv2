@@ -23,6 +23,10 @@ const Searchbar = styled.div`
         align-items: flex-start;
     }
     
+    .searchOptions {
+        background-color: white;
+    }
+
     @media all and (min-width: 320px) and (max-width: 670px){
         width: 95%;
     }
