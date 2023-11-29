@@ -15,15 +15,15 @@ import SearchBar from './composants/SearchBar/SearchBar';
 import { LivreProvider } from './context/LivreProvider';
 import { ArticlesProvider } from './context/ArticleProvider';
 import { ArticleType } from './context/ArticleProvider';
-import { LivreType } from './context/LivreProvider';
+import Article from './composants/Article/Article';
 
 function App(): ReactElement {
     
     const [viewCart, setViewCart] = useState(false);
 
-    const [searchResults, setSearchResults] = useState<(ArticleType | LivreType)[]>([]);
+    const [searchResults, setSearchResults] = useState<(ArticleType)[]>([]);
 
-    const handleSearchResults = (results: (ArticleType | LivreType)[]) => {
+    const handleSearchResults = (results: (ArticleType)[]) => {
         if (results) {
             setSearchResults(results);
         } else {
@@ -56,13 +56,26 @@ function App(): ReactElement {
               {/* Add more routes as needed */}
             </Routes>
           ) : (
-            <div>
+            <div className='Results'>
               <h2>Search Results:</h2>
               {searchResults.map((result) => (
-                <div key={result.id}>
-                  <p>{'titre' in result ? result.titre : result.designation}</p>
-                  {/* Include other relevant information based on the type */}
-                </div>
+                <Article key={result.id} 
+                    article={{
+                        id: 0,
+                        ref: result.ref,
+                        categorie: result.categorie,
+                        prixHT: result.prixHT,
+                        prixTTC: result.prixTTC,
+                        tva: result.tva,
+                        designation: result.designation,
+                        stock: 0,
+                        numerique: false
+                  }} dispatch={
+                        function (): void {
+                            throw new Error('Function not implemented.');
+                        } } 
+                    REDUCER_ACTIONS={undefined} inCart={false}                  
+                />
               ))}
             </div>
           )}

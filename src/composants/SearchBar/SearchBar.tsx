@@ -29,7 +29,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults }) => {
             setLoading(true);
             setError(null);
     
-            const apiUrl = `http://localhost:8080/demo/livres/search?query=${encodeURIComponent(query)}`;
+            const apiUrl = `http://localhost:8080/demo/articles/search?designation=${encodeURIComponent(query)}`;
+
             console.log('API URL:', apiUrl);
     
             const response = await fetch(apiUrl);
