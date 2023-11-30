@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
-import '../Categorie/Categorie.styled.css';
-import '../Categorie/Categorie.styled';
+import './CommandeList.styled.css';
 import Commande from '../Commande/Commande';
 import useCommande from '../../hooks/useCommande';
 
@@ -13,19 +12,22 @@ const CommandeList = () => {
 
     if (commande?.length) {
 
-        pageContent = commande.map((commande) => {
+        pageContent = commande.map((singleCommande) => {
 
             return (
 
                 <Commande
-                    commande={commande}
-                    id={commande.id}
-                    contenu={[]}
-                    numComm={commande.numComm}
-                    dateComm={commande.dateComm}
-                    status={commande.status}
+                    key={singleCommande.id} // Add this key prop
+                    commande={singleCommande}
+                    id={singleCommande.id}
+                    contenu={singleCommande.contenu}
+                    numComm={singleCommande.numComm}
+                    dateComm={singleCommande.dateComm}
+                    status={singleCommande.status} 
+                    prixHT={singleCommande.prixHT} 
+                    tva={singleCommande.tva} 
+                    prixTTC={singleCommande.prixTTC}                
                 />
-
             );
         });
     }

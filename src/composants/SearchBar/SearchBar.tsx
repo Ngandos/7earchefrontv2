@@ -92,9 +92,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults }) => {
                     ))}
                 </datalist>
                 <button type="submit" disabled={loading}>
-                    {loading ? 'Searching...' : 'Search'}
+                    {loading ? 'Recherche en cours...' : 'Recherche'}
                 </button>
-                {/* <SearchResults articles={[]} livres={[]}/> */}
             </form>
 
             {error && <p style={{ color: 'red' }}>{error}</p>}

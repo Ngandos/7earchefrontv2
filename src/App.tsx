@@ -36,52 +36,63 @@ function App(): ReactElement {
 
   return (
     <LivreProvider>
-      <ArticlesProvider>
-        <div className="MainArea">
-        <Header viewCart={viewCart} setViewCart={setViewCart} />
-          <div className="middle">
-            <MenuNav />
-            <SearchBar onSearchResults={(results) => handleSearchResults(results)} />
-          </div>
-          {isSearchResultsEmpty && <CategorieList />}
-          {isSearchResultsEmpty ? (
-            <Routes>
-              <Route path="/" element={<ArticleList />} />
-              <Route path="/Categorie" element={<CategorieList />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/CréerUnCompte" element={<Subscription />} />
-              <Route path="/connexion" element={<Connexion />} />
-              <Route path="/Client" element={<ClientList />} />
-              <Route path="/Commande" element={<CommandeList />} />
-              {/* Add more routes as needed */}
-            </Routes>
-          ) : (
-            <div className='Results'>
-              <h2>Search Results:</h2>
-              {searchResults.map((result) => (
-                <Article key={result.id} 
-                    article={{
-                        id: 0,
-                        ref: result.ref,
-                        categorie: result.categorie,
-                        prixHT: result.prixHT,
-                        prixTTC: result.prixTTC,
-                        tva: result.tva,
-                        designation: result.designation,
-                        stock: 0,
-                        numerique: false
-                  }} dispatch={
-                        function (): void {
-                            throw new Error('Function not implemented.');
-                        } } 
-                    REDUCER_ACTIONS={undefined} inCart={false}                  
-                />
-              ))}
+        <ArticlesProvider>
+            <div className="MainArea">
+                <Header viewCart={viewCart} setViewCart={setViewCart} />
+                <div className="middle">
+                    <MenuNav />
+                    <SearchBar onSearchResults={(results) => handleSearchResults(results)} />
+                </div>
+                {isSearchResultsEmpty && <CategorieList />}
+                {isSearchResultsEmpty ? (
+                    <Routes>
+                        <Route path="/" element={<ArticleList />} />
+                        <Route path="/Categorie" element={<CategorieList />} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/CréerUnCompte" element={<Subscription />} />
+                        <Route path="/connexion" element={<Connexion />} />
+                        <Route path="/Client" element={<ClientList />} />
+                        <Route path="/Commande" element={<CommandeList />} />
+                    </Routes>
+                ) : (
+                    <div className='Results'>
+                        <div className='res'>
+                            <h2>Resultats de recherche:</h2>
+                        </div>
+                        <br/>
+                        <div className='rescont'>
+                            {searchResults.map((result) => (
+                                <Article key = {result.id} 
+                                    article = {{
+                                        id: 0,
+                                        ref: result.ref,
+                                        categorie: result.categorie,
+                                        prixHT: result.prixHT,
+                                        prixTTC: result.prixTTC,
+                                        tva: result.tva,
+                                        designation: result.designation,
+                                        stock: 0,
+                                        numerique: false
+                                    }} 
+                                    dispatch = {
+                                        function (): void {
+                                            throw new Error('Function not implemented.');
+                                        } } 
+                                        REDUCER_ACTIONS = {{
+                                                ADD: 'ADD',
+                                            REMOVE: 'REMOVE',
+                                            QUANTITY: 'QUANTITY',
+                                            SUBMIT: 'SUBMIT',
+                                        }}
+                                    inCart={false}                  
+                                />
+                            ))}
+                        </div>
+                    </div>
+                )}
+                <Footer viewCart={false} />
             </div>
-          )}
-          <Footer viewCart={false} />
-        </div>
-      </ArticlesProvider>
+        </ArticlesProvider>
     </LivreProvider>
   );
 }

@@ -18,6 +18,8 @@ const Subscription = () => {
 
     const [formData, setFormData] = useState(SuscribeFormData);
 
+    const [confirmationMessage, setConfirmationMessage] = useState("");
+
     const { username, nom, prenom, email, password, passwordConfirm } = formData;
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +38,7 @@ const Subscription = () => {
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(formData);
-        setFormData(SuscribeFormData);
+        handleSubscription();
     }
 
     const handleSubscription = async() => {
@@ -63,10 +65,11 @@ const Subscription = () => {
         try {
             const response = await axios.post('http://localhost:8080/demo/users', user);
             console.log('Compte créé:', response.data, user);
-            // toast.success('Compte créé avec succès');
+            setConfirmationMessage('Compte créé avec succès');
+            setFormData(SuscribeFormData); // Reset the form
         } catch (error) {
             console.error('Erreur lors de la création du compte:', error);
-            // toast.error('Erreur lors de la création du compte');
+            setConfirmationMessage('Erreur lors de la création du compte');
         }
     }
 
@@ -150,6 +153,7 @@ const Subscription = () => {
                     </Link> 
                 </p>
             </FormContainer>
+            {confirmationMessage && <p>{confirmationMessage}</p>}
         </SubscribForm>
     );
 };

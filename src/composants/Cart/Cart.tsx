@@ -90,7 +90,7 @@ const Cart = () => {
                     <ul className="cart">
                         {cart.map(item => (
                             <CartLineItem
-                                key={item.ref}
+                                key={item.id}
                                 item={item}
                                 dispatch={dispatch}
                                 REDUCER_ACTIONS={REDUCER_ACTIONS}
