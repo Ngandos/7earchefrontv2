@@ -16,6 +16,7 @@ import { LivreProvider } from './context/LivreProvider';
 import { ArticlesProvider } from './context/ArticleProvider';
 import { ArticleType } from './context/ArticleProvider';
 import Article from './composants/Article/Article';
+import UserProfil from './composants/UserProfil/UserProfil';
 
 function App(): ReactElement {
     
@@ -53,6 +54,15 @@ function App(): ReactElement {
                         <Route path="/connexion" element={<Connexion />} />
                         <Route path="/Client" element={<ClientList />} />
                         <Route path="/Commande" element={<CommandeList />} />
+                        <Route path="/Mon Compte" element={<UserProfil client={{
+                            id: 0,
+                            nom: '',
+                            prenom: '',
+                            numCompte: '',
+                            commandes: [],
+                            adresses: []
+                            }}/>
+                        }/>
                     </Routes>
                 ) : (
                     <div className='Results'>
@@ -79,7 +89,7 @@ function App(): ReactElement {
                                             throw new Error('Function not implemented.');
                                         } } 
                                         REDUCER_ACTIONS = {{
-                                                ADD: 'ADD',
+                                            ADD: 'ADD',
                                             REMOVE: 'REMOVE',
                                             QUANTITY: 'QUANTITY',
                                             SUBMIT: 'SUBMIT',

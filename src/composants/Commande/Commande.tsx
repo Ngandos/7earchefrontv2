@@ -19,17 +19,20 @@ type PropsType = {
   prixTTC: number;
 };
 
-const Commande: React.FC<PropsType> = ({ numComm, dateComm, status, contenu, /* other props */ }) => {
+const Commande: React.FC<PropsType> = ({ numComm, dateComm, status, contenu,}) => {
 
   const content = (
+
     <div className='wrapper'>
       <div className='cols'>
         <div className='col'>
           <div className='container'>
             <div className='front'>
               <div className='inner'>
-                <span>Recap Commande</span>
-                <p>{"Commande " + numComm}</p>
+                <span className='comNom'>
+                  <p>Recap Commande</p>
+                </span>
+                <p>{"Commande n°: " + numComm}</p>
                 <span className='catName'>
                   <p>{"Date " + dateComm.toString()}</p>
                 </span>

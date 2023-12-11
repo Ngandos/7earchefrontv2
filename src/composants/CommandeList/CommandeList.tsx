@@ -34,7 +34,7 @@ const CommandeList = () => {
 
     const content = 
     
-        <main className='main main--commandeList'>
+        <main className='commandeList'>
             {pageContent}
         </main>;
 

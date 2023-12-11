@@ -9,7 +9,7 @@ interface SearchBarProps {
   onSearchResults: (results: LivreType[]) => void;
 }
 
-const placeholderStatus = 'Rechercher un livre par son titre ...';
+const placeholderStatus = 'Rechercher un article ...';
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults }) => {
 

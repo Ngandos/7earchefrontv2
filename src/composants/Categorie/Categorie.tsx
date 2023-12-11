@@ -26,7 +26,7 @@ const Categorie = ({ categorie }: PropsType): ReactElement => {
             <div className='back'>
               <div className='inner'>
                 <p>{categorie.description}</p>
-              </div>
+              </div>  
             </div>
           </div>
         </div>

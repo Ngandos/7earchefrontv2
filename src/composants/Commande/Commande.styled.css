@@ -1,7 +1,13 @@
-main {
+.commandeList {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
+    overflow: scroll;
+}
+
+.comNom {
+    color: black;
 }
 
 .rotation3d {
@@ -73,7 +79,7 @@ h1 {
 }
   
 .wrapper {
-    width: 90%;
+    width: 30%;
     margin: 0 auto;
     max-width: 80rem;
   }
@@ -141,7 +147,7 @@ h1 {
     content: '';
     display: block;
     opacity: .6;
-    background-image: url('../../images/ID.Visuelle/CinemaBandeauCouleur.jpeg');
+    background-image: url('../../images/ID.Visuelle/images1.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-backface-visibility: hidden;
