@@ -62,19 +62,23 @@ const Cart = () => {
     const renderConfirmation = () => {
         if (confirm && commande) {
             return (
-                <>
+                <div className="comconf">
                     <h2>Nous vous remercions pour vos achats !!!</h2>
-                    <p>Date de la commande: {commande.dateComm}</p>
-                    <p>Numéro de commande: {commande.numComm}</p>
+                    <br/>
+                    <p>Date de la commande : <strong>{commande.dateComm}</strong></p>
+                    <br/>
+                    <p>Numéro de commande : {commande.numComm}</p>
+                    <br/>
                     {commande.contenu.map(item => (
-                        <div key={item.id}>
+                        <div className="Lines" key={item.id}>
                             <p>ID: {item.id}</p>
                             <p>Article: {item.article}</p>
                             <p>Quantite: {item.quantite}</p>
                         </div>
                     ))}
+                    <br/>
                     <p>Statut de la commande: {commande.status}</p>
-                </>
+                </div>
             );
         }
         return null;

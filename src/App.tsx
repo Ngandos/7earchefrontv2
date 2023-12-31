@@ -45,7 +45,9 @@ function App(): ReactElement {
                     <SearchBar onSearchResults={(results) => handleSearchResults(results)} />
                 </div>
                 {isSearchResultsEmpty && <CategorieList />}
+
                 {isSearchResultsEmpty ? (
+                    
                     <Routes>
                         <Route path="/" element={<ArticleList />} />
                         <Route path="/Categorie" element={<CategorieList />} />

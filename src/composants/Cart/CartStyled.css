@@ -10,6 +10,19 @@
     
 }
 
+.comconf {
+    width: 50%;
+    padding: 24px;
+}
+
+.Lines {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .CartContent {
     margin: 0;
     padding: 24px;
