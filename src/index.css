@@ -61,7 +61,7 @@ button:focus-visible {
 }
 
 .Results {
-    width: 80%;
+    width: 95%;
     height: auto;
     margin: auto;
     padding: 24px;
@@ -71,13 +71,16 @@ button:focus-visible {
 }
 
 .res {
-    width: 100%;
+  margin: auto;
+  color: red;
+  width: 25%;
 }
 
 .rescont {
     width: 100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 

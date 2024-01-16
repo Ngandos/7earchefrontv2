@@ -25,9 +25,12 @@ const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }: PropsType): Rea
                 <img src= {img} alt={ article.designation } className='articleImg'/>
                 <strong>
                     <p>
-                        {new Intl.NumberFormat('fr-FR', 
+                        {
+                        new Intl.NumberFormat('fr-FR', 
                         { style: 'currency', currency: 'EUR' })
-                        .format(article.prixTTC)} { itemInCart }
+                            .format(article.prixHT * 1 + article.tva)
+                        } 
+                        { itemInCart }
                     </p>
                 </strong>
                 <button className='CartImpl' onClick = {onAddToCart}> 

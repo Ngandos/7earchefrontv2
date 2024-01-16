@@ -19,9 +19,10 @@ type SearchResultsProps = {
 };
 
 const SearchResults: React.FC<SearchResultsProps> = ({ articles }) => {
+
   return (
     <SearchResultsContainer>
-      <div>
+      <div className='ResComp'>
         {articles?.map((article: ArticleProps) => (
           <div key={article.id}>
             <p>{article.designation}</p>

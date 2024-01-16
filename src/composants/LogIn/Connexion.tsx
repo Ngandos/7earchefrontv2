@@ -28,7 +28,7 @@ const Connexion = () => {
       // Log the entire response to inspect details in the console
       console.log('Authentication Response:', response);
 
-      console.log('Credentials',  ConnectFormData);
+      console.log('Credentials',  FormData);
 
       // Assuming the server sends back a JWT token in the response
       const token = response.data.token;
@@ -41,8 +41,11 @@ const Connexion = () => {
       console.error('Erreur lors de la connexion:', error);
 
       if (axios.isAxiosError(error)) {
+
         const axiosError: AxiosError = error;
+
         if (axiosError.response) {
+
           console.error('Server Response:', axiosError.response.data);
         }
       }
@@ -67,6 +70,7 @@ const Connexion = () => {
         placeholder="Username"
         value={username}
         onChange={onChange}
+        autoComplete="username" // Add this line
       />
       <br />
       <label className='SubLabel' htmlFor="password">Password :</label>
@@ -77,6 +81,7 @@ const Connexion = () => {
         placeholder="Password"
         value={password}
         onChange={onChange}
+        autoComplete="current-password" // Add this line
       />
       <br />
 

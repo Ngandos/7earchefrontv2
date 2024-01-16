@@ -91,7 +91,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults }) => {
                         <option key={`searchOption-${result.id}`} value={result.titre} />
                     ))}
                 </datalist>
-                <button type="submit" disabled={loading}>
+                <button className='SearchButt' type="submit" disabled={loading}>
                     {loading ? 'Recherche en cours...' : 'Recherche'}
                 </button>
             </form>

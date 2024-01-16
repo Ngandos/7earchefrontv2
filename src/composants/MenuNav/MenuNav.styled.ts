@@ -4,9 +4,12 @@ const NavPages = styled.div `
     width: 100%;
     height: auto;
     margin: auto;
+    justify-content: center;
+    
     .navlist {
         width: 80%;
         margin: auto;
+        margin-bottom: 2%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;

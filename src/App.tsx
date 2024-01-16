@@ -69,7 +69,7 @@ function App(): ReactElement {
                 ) : (
                     <div className='Results'>
                         <div className='res'>
-                            <h2>Resultats de recherche:</h2>
+                            <h2>Resultats de recherche :</h2>
                         </div>
                         <br/>
                         <div className='rescont'>
