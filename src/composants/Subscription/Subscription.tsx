@@ -44,7 +44,7 @@ const Subscription = () => {
     const handleSubscription = async() => {
 
         const user = {
-            id: 0, // Generate a unique ID
+            id: id, // Generate a unique ID
             adresses: [],
             commandes: [],
             username: username,

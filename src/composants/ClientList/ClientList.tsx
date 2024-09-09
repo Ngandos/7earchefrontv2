@@ -7,36 +7,39 @@ import useClient from '../../hooks/useClient';
 
 const ClientList = () => {
 
-  const {client} = useClient();
+    const {clients} = useClient();
 
-  let pageContent: ReactElement | ReactElement[] = <p>Loading...</p>;
+    let pageContent: ReactElement | ReactElement[] = <p>Loading...</p>;
 
-  if (client?.length) {
-    pageContent = client.map((client: ClientType) => {
+    if (clients?.length) {
+        pageContent = clients.map((client: ClientType) => {
 
-      return (
+            return (
 
-        <Client
-          id={client.id}
-          adresses={""}
-          client={client}
-          nom={client.nom}
-          prenom={client.prenom}
-          numCompte={client.numCompte}
-          commandes={[]}
-        />
+                <Client
+                    id={client.id}
+                    adresses={[]}
+                    client={client}
+                    nom={client.nom}
+                    prenom={client.prenom}
+                    numCompte={client.numCompte}
+                    commandes={[]} 
+                    userName={''} 
+                    email={''} 
+                    password={''}        
+                />
 
-      );
-    });
-  }
+            );
+        });
+    }
 
-  const content = 
-  
-    <main className='main main--clientList'>
-      {pageContent}
-    </main>;
+    const content = 
+    
+        <main className='main main--clientList'>
+            {pageContent}
+        </main>;
 
-  return content;
+    return content;
   
 };
 

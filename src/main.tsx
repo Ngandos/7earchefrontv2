@@ -6,8 +6,8 @@ import { ArticlesProvider } from './context/ArticleProvider.tsx'
 import { CartProvider } from './context/CartProvider.tsx'
 import { CategoriesProvider } from './context/CategorieProvider.tsx';
 import { ClientProvider } from './context/ClientProvider.tsx';
-import { BrowserRouter } from 'react-router-dom'
 import { CommandeProvider } from './context/CommandeProvider.tsx'
+import { BrowserRouter } from 'react-router-dom'
 
 
 

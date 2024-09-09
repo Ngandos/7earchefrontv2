@@ -2,11 +2,7 @@ import React from 'react';
 import { ClientType } from '../../context/ClientProvider';
 import { ProfilCard } from './UserProfil.styled';
 
-type PropsType = {
-    client: ClientType;
-};
-
-const UserProfil: React.FC<PropsType> = ({ client }) => {
+const UserProfil: React.FC<ClientType> = ({ client }:ClientType) => {
     // Assuming Image is defined or replaced with the actual image name
     const img: string = new URL(`/src/images/ID.Visuelle/${client.nom}.jpg`, import.meta.url).href;
 

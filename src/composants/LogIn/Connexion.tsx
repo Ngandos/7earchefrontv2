@@ -1,96 +1,104 @@
 import { useState } from "react";
 import ConnectForm from "./Connexion.styled";
 import axios, { AxiosError } from "axios";
+import { Link } from "react-router-dom";
 
 const Connexion = () => {
-  const ConnectFormData = {
-    username: "",
-    password: "",
-  };
+    const ConnectFormData = {
+        username: "",
+        password: "",
+    };
 
-  const [formData, setFormData] = useState(ConnectFormData);
+    const [formData, setFormData] = useState(ConnectFormData);
 
-  const { username, password } = formData;
+    const { username, password } = formData;
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [e.target.id]: e.target.value,
-    }));
-  };
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [e.target.id]: e.target.value,
+        }));
+    };
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-    e.preventDefault();
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
 
-    try {
-      const response = await axios.post('http://localhost:8080/demo/connect', formData);
+        e.preventDefault();
 
-      // Log the entire response to inspect details in the console
-      console.log('Authentication Response:', response);
+        try {
+            const response = await axios.post('http://localhost:8080/demo/connect', formData);
 
-      console.log('Credentials',  FormData);
+            // Log the entire response to inspect details in the console
+            console.log('Authentication Response:', response);
 
-      // Assuming the server sends back a JWT token in the response
-      const token = response.data.token;
+            console.log('Credentials',  FormData);
 
-      // Store the token in localStorage or a secure storage mechanism
-      localStorage.setItem('jwtToken', token);
+            // Assuming the server sends back a JWT token in the response
+            const token = response.data.token;
 
-      // TODO: Redirect to the authenticated route or update app state accordingly
-    } catch (error) {
-      console.error('Erreur lors de la connexion:', error);
+            // Store the token in localStorage or a secure storage mechanism
+            localStorage.setItem('jwtToken', token);
 
-      if (axios.isAxiosError(error)) {
+        // TODO: Redirect to the authenticated route or update app state accordingly
+        } catch (error) {
+            console.error('Erreur lors de la connexion:', error);
 
-        const axiosError: AxiosError = error;
+            if (axios.isAxiosError(error)) {
 
-        if (axiosError.response) {
+                const axiosError: AxiosError = error;
 
-          console.error('Server Response:', axiosError.response.data);
+                if (axiosError.response) {
+
+                    console.error('Server Response:', axiosError.response.data);
+                }
+            }
+
+        // TODO: Handle authentication failure, show error message, etc.
         }
-      }
 
-      // TODO: Handle authentication failure, show error message, etc.
-    }
+        // Clear the password field in the state for security
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            password: "",
+        }));
+    };
 
-    // Clear the password field in the state for security
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      password: "",
-    }));
-  };
-
-  return (
-    <ConnectForm onSubmit={onSubmit}>
-      <label className='SubLabel' htmlFor="username">Username :</label>
-      <input
-        className="CoInput"
-        type="text"
-        id="username"
-        placeholder="Username"
-        value={username}
-        onChange={onChange}
-        autoComplete="username" // Add this line
-      />
-      <br />
-      <label className='SubLabel' htmlFor="password">Password :</label>
-      <input
-        className="CoInput"
-        type="password"
-        id="password"
-        placeholder="Password"
-        value={password}
-        onChange={onChange}
-        autoComplete="current-password" // Add this line
-      />
-      <br />
-
-      <button className="connect" type="submit">
-        Envoyer
-      </button>
-      <br />
-    </ConnectForm>
-  );
+    return (
+        <ConnectForm onSubmit={onSubmit}>
+            <label className='SubLabel' htmlFor="username">Username :</label>
+            <input
+                className="CoInput"
+                type="text"
+                id="username"
+                placeholder="Username"
+                value={username}
+                onChange={onChange}
+                autoComplete="username" // Add this line
+            />
+            <br />
+            <label className='SubLabel' htmlFor="password">Password :</label>
+            <input
+                className="CoInput"
+                type="password"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={onChange}
+                autoComplete="current-password" // Add this line
+            />
+            <br />
+            <button className="connect" type="submit">
+                Envoyer
+            </button>
+            <br />
+            <p>
+                Pas encore de compte ?
+                <br/>
+                <Link className='butt' to='/créerUnCompte'>
+                    S'inscrire
+                </Link> 
+            </p>
+        </ConnectForm>
+    );
 };
 
 export default Connexion;

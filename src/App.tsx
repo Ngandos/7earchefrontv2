@@ -12,7 +12,6 @@ import Subscription from './composants/Subscription/Subscription';
 import ClientList from './composants/ClientList/ClientList';
 import CommandeList from './composants/CommandeList/CommandeList';
 import SearchBar from './composants/SearchBar/SearchBar';
-import { LivreProvider } from './context/LivreProvider';
 import { ArticlesProvider } from './context/ArticleProvider';
 import { ArticleType } from './context/ArticleProvider';
 import Article from './composants/Article/Article';
@@ -33,10 +32,10 @@ function App(): ReactElement {
         }
     };
 
-  const isSearchResultsEmpty = searchResults.length === 0;
+    const isSearchResultsEmpty = searchResults.length === 0;
 
-  return (
-    <LivreProvider>
+    return (
+       
         <ArticlesProvider>
             <div className="MainArea">
                 <Header viewCart={viewCart} setViewCart={setViewCart} />
@@ -104,9 +103,8 @@ function App(): ReactElement {
                 )}
                 <Footer viewCart={false} />
             </div>
-        </ArticlesProvider>
-    </LivreProvider>
-  );
+        </ArticlesProvider>      
+    );
 }
 
 export default App;

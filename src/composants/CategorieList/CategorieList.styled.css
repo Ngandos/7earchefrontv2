@@ -244,7 +244,7 @@ h1 {
   
 @media screen and (max-width: 64rem) {
     .col {
-      width: calc(100% - 2rem);
+        width: calc(100% - 2rem);
     }
     .wrapper {
         width: 90%;
@@ -259,7 +259,7 @@ h1 {
       }
     
     .col {
-      width: calc(50% - 2rem);
+        width: calc(50% - 2rem);
     }
 
     main {
@@ -276,8 +276,8 @@ h1 {
   
 @media screen and (max-width: 32rem) {
     .col {
-      width: 100%;
-      margin: 0 0 2rem 0;
+        width: 100%;
+        margin: 0 0 2rem 0;
     }
 }
 

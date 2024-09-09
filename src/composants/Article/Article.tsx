@@ -16,7 +16,7 @@ const Article = ({ article, dispatch, REDUCER_ACTIONS, inCart }: PropsType): Rea
 
         const onAddToCart = () => dispatch({ type: REDUCER_ACTIONS.ADD, payload: { ...article, qty: 1 }})
 
-        const itemInCart = inCart ? ' -> Ajouté au panier: ' : null
+        const itemInCart = inCart  ? ' -> Ajouté au panier: ' : null
 
         const content = (
             

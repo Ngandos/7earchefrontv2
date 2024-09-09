@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-image: url(../images/ID.Visuelle/CinemaBandeauCouleur.jpeg);
+    background-image: url('../../images/ID.Visuelle/CinemaBandeauCouleur.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     border-bottom: black solid 2px;
