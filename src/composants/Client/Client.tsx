@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { ClientType } from '../../context/ClientProvider';
-import '../Client/Client.styled.css'
+import './Client.styled.css'
 
 
 type PropsType = {
@@ -37,6 +37,7 @@ const Client = ({ client }: PropsType): ReactElement => {
                         <div className='back'>
                             <div className='inner'>
                                 <p>{client.commandes}</p>
+                                <p>Test</p>
                             </div>
                         </div>
                     </div>

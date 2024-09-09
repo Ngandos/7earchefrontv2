@@ -10,7 +10,7 @@ const Searchbar = styled.div`
 
     .search {
         width: 100%;
-        height: 40px;
+        height: 50px;
         padding: 10px;
         color: black;
         background-color: white;

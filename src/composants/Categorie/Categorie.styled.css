@@ -139,7 +139,7 @@ h1 {
     height: 100%;
     content: '';
     display: block;
-    opacity: .6;
+    opacity: 0.6;
     background-image: url('../../images/ID.Visuelle/CinemaBandeauCouleur.jpeg');
     background-repeat: no-repeat;
     background-size: cover;

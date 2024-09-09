@@ -31,7 +31,7 @@ const Subscription = () => {
 
     function generateUniqueAccountNumber() {
         const timestamp = Date.now();
-        const randomPart = Math.floor(Math.random() * 10000);
+        const randomPart = Math.floor(Math.random() * 1000);
         return `ACCU${timestamp}${randomPart}`;
     }
 
@@ -44,7 +44,7 @@ const Subscription = () => {
     const handleSubscription = async() => {
 
         const user = {
-            id: id, // Generate a unique ID
+            id: 0, // Generate a unique ID
             adresses: [],
             commandes: [],
             username: username,
